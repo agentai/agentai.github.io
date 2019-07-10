@@ -1,0 +1,3930 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/upload/image/icon-32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/upload/image/icon-16.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="#visualisation{height:500px}.axis line,.axis path{fill:none;stroke:#777;shape-rendering:crispEdges}.axis text{font-family:Arial;font-size:.6em}.tick{stroke-dasharray:1,2}.bar{fill:#b22222}.legend{c">
+<meta name="keywords" content="激活函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="激活函数图形">
+<meta property="og:url" content="https://agentai.github.io/2019/07/09/activation_functions/index.html">
+<meta property="og:site_name" content="多巴胺授体">
+<meta property="og:description" content="#visualisation{height:500px}.axis line,.axis path{fill:none;stroke:#777;shape-rendering:crispEdges}.axis text{font-family:Arial;font-size:.6em}.tick{stroke-dasharray:1,2}.bar{fill:#b22222}.legend{c">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-10T03:32:09.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="激活函数图形">
+<meta name="twitter:description" content="#visualisation{height:500px}.axis line,.axis path{fill:none;stroke:#777;shape-rendering:crispEdges}.axis text{font-family:Arial;font-size:.6em}.tick{stroke-dasharray:1,2}.bar{fill:#b22222}.legend{c">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://agentai.github.io/2019/07/09/activation_functions/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>激活函数图形 | 多巴胺授体</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f8b52c6d80db5278202277611f7d3554";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">多巴胺授体</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/agentai" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://agentai.github.io/2019/07/09/activation_functions/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="duobaan_shouti"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/upload/image/webwxgeticon.jpeg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="多巴胺授体"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">激活函数图形
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-09 19:21:24" itemprop="dateCreated datePublished" datetime="2019-07-09T19:21:24+08:00">2019-07-09</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-10 11:32:09" itemprop="dateModified" datetime="2019-07-10T11:32:09+08:00">2019-07-10</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br/>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">3.1k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">6 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
+<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+<style type="text/css">#visualisation{height:500px}.axis line,.axis path{fill:none;stroke:#777;shape-rendering:crispEdges}.axis text{font-family:Arial;font-size:.6em}.tick{stroke-dasharray:1,2}.bar{fill:#b22222}.legend{cursor:pointer}.MathJax_SVG svg>g,.MathJax_SVG_Display svg>g{fill:#000;stroke:#000}.legend{font-size:1.2em}.graph_inputs{font-size:.8em}.func_text{font-size:.65em}.deriv_func_text{font-size:.65em}#select_activ{font-size:.8em}.input_labels{font-size:.8em}#func_equation{font:"Helvetica Neue";font-size:.9em}#deriv_func_equation{font:"Helvetica Neue";font-size:.9em}#rrelu_button{background-color:#090;color:#fff;text-align:center;text-decoration:none;display:inline-block;font-size:.8em;cursor:pointer;margin-left:.3em}#rrelu_button:hover{background-color:#4caf50;color:#fff}</style>
+
+</head>
+<body><div id="browser_warning"><p>版权所有为 <a href="https://dashee87.github.io/about/" target="_blank" rel="noopener">David Sheehan</a> 原blog地址为：<a href="https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">Visualising Activation Functions in Neural Networks</a></p></div><div id="browser_warning"><p>Note: 注意：建议您在Chrome上查看以获得最佳体验。在Firefox和IE上，框中的等式可能无法呈现。</p></div><select id="select_activ" onchange="InitChart()"><option value="step" selected>Step</option><option value="identity">Identity</option><option value="relu">ReLu</option><option value="sigmoid">Sigmoid</option><option value="tanh">Tanh</option><option value="leakyrelu">Leaky ReLU</option><option value="prelu">PReLU</option><option value="rrelu">RReLU</option><option value="elu">ELU</option><option value="selu">SELU</option><option value="srelu">SReLU</option><option value="hardsigmoid">Hard Sigmoid</option><option value="hardtanh">Hard Tanh</option><option value="lctanh">LeCun Tanh</option><option value="arctan">ArcTan</option><option value="softsign">SoftSign</option><option value="softplus">Softplus</option><option value="sign">Signum</option><option value="bentid">Bent Identity</option><option value="symmsigmoid">Symmetrical Sigmoid</option><option value="loglog">Log Log</option><option value="gaussian">Gaussian</option><option value="absolute">Absolute</option><option value="sinusoid">Sinusoid</option><option value="cos">Cos</option><option value="sinc">Sinc</option></select><form name="message" method="post" id="plot_inputs"><div style="float:left;margin-right:20px;margin-left:100px"><label for="alpha_input" style="display:none" class="input_labels" id="alpha_input_label">α<sub></sub></label> <input id="alpha_input" class="graph_inputs" size="5" type="text" value="0.7" style="display:none" onchange="InitChart()"></div><div style="float:left;margin-right:20px"><label for="alpha_input_r" style="display:none" class="input_labels" id="alpha_input_r_label">α<sub>r</sub></label> <input id="alpha_input_r" class="graph_inputs" size="5" type="text" value="0.4" style="display:none" onchange="InitChart()"></div><div style="float:left;margin-right:20px"><label for="t_input_l" style="display:none" class="input_labels" id="t_input_l_label">t<sub>l</sub></label> <input id="t_input_l" class="graph_inputs" size="5" type="text" value="-1.0" style="display:none" onchange="InitChart()"></div><div style="float:left;margin-right:20px"><label for="t_input_r" style="display:none" class="input_labels" id="t_input_r_label">t<sub>r</sub></label> <input id="t_input_r" class="graph_inputs" size="5" type="text" value="1.0" style="display:none" onchange="InitChart()"></div><br style="clear:both"></form><button type="button" onclick="InitChart()" id="rrelu_button" style="display:none;margin-left:20px">Random α</button><div id="legendContainer" class="legendContainer" style="width:100%"><svg id="visualisation" width="100%" height="500px"/><div id="func_primer" style="margin-left:20px;font-size:.8em;margin-right:20px"><p>这种激活函数更具理论性而非实际性，模仿生物神经元的全有或全无特性。它对神经网络没有 用，因为它的导数是零（除了0，它是未定义的）。这意味着基于梯度的优化方法是不可行的。</p></div></div><br><script type="text/javascript">MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [["$", "$"], ["\\(", "\\)"]],
+          processEscapes: true
+        }
+      });
+
+      function erf(x) {
+        var z;
+        const ERF_A = 0.147;
+        var the_sign_of_x;
+        if (0 == x) {
+          the_sign_of_x = 0;
+          return 0;
+        } else if (x > 0) {
+          the_sign_of_x = 1;
+        } else {
+          the_sign_of_x = -1;
+        }
+
+        var one_plus_axsqrd = 1 + ERF_A * x * x;
+        var four_ovr_pi_etc = 4 / Math.PI + ERF_A * x * x;
+        var ratio = four_ovr_pi_etc / one_plus_axsqrd;
+        ratio *= x * -x;
+        var expofun = Math.exp(ratio);
+        var radical = Math.sqrt(1 - expofun);
+        z = radical * the_sign_of_x;
+        return z;
+      }
+
+      // https://stackoverflow.com/questions/12556685/is-there-a-javascript-implementation-of-the-inverse-error-function-akin-to-matl
+
+      function erfINV(inputX) {
+        var _a = (8 * (Math.PI - 3)) / (3 * Math.PI * (4 - Math.PI));
+        var _x = parseFloat(inputX);
+        var signX = _x < 0 ? -1.0 : 1.0;
+
+        var oneMinusXsquared = 1.0 - _x * _x;
+        var LNof1minusXsqrd = Math.log(oneMinusXsquared);
+        var PI_times_a = Math.PI * _a;
+
+        var firstTerm = Math.pow(2.0 / PI_times_a + LNof1minusXsqrd / 2.0, 2);
+        var secondTerm = LNof1minusXsqrd / _a;
+        var thirdTerm = 2 / PI_times_a + LNof1minusXsqrd / 2.0;
+
+        var primaryComp = Math.sqrt(
+          Math.sqrt(firstTerm - secondTerm) - thirdTerm
+        );
+
+        var scaled_R = signX * primaryComp;
+        return scaled_R;
+      }
+
+      var delay = 200;
+      var activ_func = document.getElementById("select_activ").value;
+
+      var lineData = [];
+      var lineData_deriv = [];
+
+      func_tags = [
+        {
+          func_tex:
+            "$f(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
+          func_range: "{0, 1}",
+          func_contin: "C" + "⁻¹",
+          func_mono: "✅",
+          func_origin: "❌",
+          func_symm: "不对称",
+          func_ref: "",
+          func_primer:
+            "这种激活函数更具理论性而非实际性, 包括<b>Step</b> (也包括, <b>Binary Step</b> 或 <b>Heaviside</b>) 模仿生物神经元的全有或全无特性。它对神经网络没有用，因为它的导数是零（除了0，它是未定义的）。这意味着基于梯度的优化方法是不可行的"
+        }
+      ];
+
+      deriv_func_tags = [
+        {
+          deriv_func_tex:
+            "$f'(x) =\\begin{cases}0 & \\text{for } x\\neq0\\\\? & \\text{for } x=0\\end{cases} $",
+          deriv_func_range: "{0}",
+          deriv_func_contin: "❌",
+          deriv_func_mono: "❌",
+          deriv_func_symm: "❌",
+          deriv_func_van: "否",
+          deriv_func_exp: "否",
+          deriv_func_sat: "否",
+          deriv_func_dead: "是"
+        }
+      ];
+
+      axis_limits = [-3, 3, -1.3, 1.3];
+
+      for (var i = -3; i <= 3; i = i + 0.001) {
+        lineData.push({
+          x: i,
+          y: i >= 0
+        });
+        lineData_deriv.push({
+          x: i,
+          y: 0
+        });
+      }
+
+      var vis = d3.select("#visualisation"),
+        WIDTH = parseInt(
+          document.getElementById("browser_warning").offsetWidth
+        ),
+        HEIGHT = parseInt(vis.style("height")),
+        //   HEIGHT = parseInt(document.documentElement.clientHeight)*0.8,
+        MARGINS = {
+          top: HEIGHT / 25.0,
+          right: WIDTH / 2.5,
+          bottom: HEIGHT / 25.0,
+          left: WIDTH / 50.0
+        },
+        boxmargin = (HEIGHT - MARGINS.top) / 24.0,
+        boxmargin_horizontal = MARGINS.right / 2.2,
+        rect_margin = MARGINS.right / 50.0,
+        xRange = d3.scale
+          .linear()
+          .range([MARGINS.left, WIDTH - MARGINS.right])
+          .domain(axis_limits.slice(0, 2)),
+        yRange = d3.scale
+          .linear()
+          .range([HEIGHT - MARGINS.top, MARGINS.bottom])
+          .domain(axis_limits.slice(2, 4)),
+        xAxis = d3.svg
+          .axis()
+          .scale(xRange)
+          .tickSize(5)
+          .tickSubdivide(true),
+        yAxis = d3.svg
+          .axis()
+          .scale(yRange)
+          .tickSize(5)
+          .orient("left")
+          .tickSubdivide(true);
+
+      vis
+        .append("svg:g")
+        .attr("class", "x axis")
+        .attr(
+          "transform",
+          "translate(0," + (HEIGHT - MARGINS.bottom + MARGINS.top) / 2 + ")"
+        )
+        .attr("id", "graph_xaxis")
+        .call(xAxis);
+
+      vis
+        .append("svg:g")
+        .attr("class", "y axis")
+        .attr(
+          "transform",
+          "translate(" + (WIDTH - MARGINS.right + MARGINS.left) / 2 + ",0)"
+        )
+        .attr("id", "graph_yaxis")
+        .call(yAxis);
+
+      vis
+        .selectAll(".tick")
+        .filter(function(d) {
+          return d === 0;
+        })
+        .remove();
+
+      var lineFunc = d3.svg
+        .line()
+        .x(function(d) {
+          return xRange(d.x);
+        })
+        .y(function(d) {
+          return yRange(d.y);
+        })
+        .interpolate("linear");
+
+      vis
+        .selectAll(".tick")
+        .filter(function(d) {
+          return d === 0;
+        })
+        .remove();
+
+      var asymptotes = d3.svg
+        .line()
+        .x([-3, 3])
+        .y([5, 5])
+        .interpolate("linear");
+
+      var asymptote_top = 5,
+        asymptote_bottom = -5;
+
+      //d3.select("#func").remove();
+
+      vis
+        .append("svg:path")
+        .attr("d", lineFunc(lineData))
+        .attr("stroke", "blue")
+        .attr("stroke-width", 3)
+        .attr("id", "func")
+        .attr("fill", "none");
+
+      vis
+        .append("svg:path")
+        .attr("d", lineFunc(lineData_deriv))
+        .attr("stroke", "orange")
+        .attr("stroke-width", 2)
+        .attr("id", "deriv_func")
+        .attr("fill", "none");
+
+      vis
+        .append("svg:path")
+        .attr(
+          "d",
+          lineFunc([{ x: axis_limits[0], y: 5 }, { x: axis_limits[1], y: 5 }])
+        )
+        .attr("stroke", "gray")
+        .attr("stroke-width", 2)
+        .style("stroke-dasharray", "3, 3")
+        .attr("id", "top_asymptote")
+        .attr("fill", "none");
+
+      vis
+        .append("svg:path")
+        .attr(
+          "d",
+          lineFunc([{ x: axis_limits[0], y: -5 }, { x: axis_limits[1], y: -5 }])
+        )
+        .attr("stroke", "gray")
+        .attr("stroke-width", 2)
+        .style("stroke-dasharray", "3, 3")
+        .attr("id", "bottom_asymptote")
+        .attr("fill", "none");
+
+      vis
+        .append("rect")
+        .attr("x", WIDTH - MARGINS.right + rect_margin)
+        .attr("y", MARGINS.top)
+        .attr("width", MARGINS.right - rect_margin * 2.0)
+        .attr("height", (HEIGHT - MARGINS.top) / 2 - boxmargin)
+        .attr("rx", 10)
+        .attr("ry", 10)
+        .attr("stroke", "blue")
+        .attr("stroke-width", "5")
+        .attr("stroke-opacity", "0.4")
+        .attr("fill-opacity", "0.1")
+        .style("fill", "blue")
+        .attr("class", "info_rect")
+        .attr("id", "func_rect");
+
+      vis
+        .append("foreignObject")
+        .data(func_tags)
+        .attr("id", "func_equation")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2)
+        .attr("y", MARGINS.top + boxmargin / 2)
+        .append("xhtml:div")
+        .attr("class", "func_text")
+        .text(function(d) {
+          return d.func_tex;
+        });
+
+      vis
+        .append("text")
+        .data(func_tags)
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2)
+        .attr("y", MARGINS.top + boxmargin * 5)
+        .attr("id", "func_range")
+        .attr("class", "func_text")
+        .text(function(d) {
+          return "值域: " + d.func_range;
+        });
+
+      vis
+        .append("text")
+        .data(func_tags)
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2)
+        .attr("y", MARGINS.top + boxmargin * 6.3)
+        .attr("id", "func_mono")
+        .attr("class", "func_text")
+        .text(function(d) {
+          return "单调性: " + d.func_mono;
+        });
+
+      vis
+        .append("text")
+        .data(func_tags)
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2)
+        .attr("y", MARGINS.top + boxmargin * 7.6)
+        .attr("id", "func_contin")
+        .attr("class", "func_text")
+        .text(function(d) {
+          return "连续性: " + d.func_contin;
+        });
+
+      vis
+        .append("text")
+        .data(func_tags)
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2)
+        .attr("y", MARGINS.top + boxmargin * 8.9)
+        .attr("id", "func_origin")
+        .attr("class", "func_text")
+        .text(function(d) {
+          return "原点恒等: " + d.func_origin;
+        });
+
+      vis
+        .append("text")
+        .data(func_tags)
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2)
+        .attr("y", MARGINS.top + boxmargin * 10.2)
+        .attr("id", "func_symm")
+        .attr("class", "func_text")
+        .text(function(d) {
+          return "对称性: " + d.func_symm;
+        });
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - boxmargin_horizontal / 1.7)
+        .attr("y", MARGINS.top + boxmargin * 10.2)
+        .attr("xlink:href", "https://dashee87.github.io/")
+        .attr("id", "func_ref")
+        .attr("class", "func_text")
+        .attr("fill", "red")
+        .html("");
+
+      // derivative rectangle
+
+      vis
+        .append("rect")
+        .attr("x", WIDTH - MARGINS.right + rect_margin)
+        .attr("y", MARGINS.top + HEIGHT / 2)
+        .attr("width", MARGINS.right - rect_margin * 2.0)
+        .attr("height", (HEIGHT - MARGINS.top) / 2 - boxmargin)
+        .attr("rx", 10)
+        .attr("ry", 10)
+        .attr("stroke", "orange")
+        .attr("stroke-width", "5")
+        .attr("stroke-opacity", "0.4")
+        .attr("fill-opacity", "0.1")
+        .style("fill", "orange")
+        .attr("class", "info_rect)")
+        .attr("id", "deriv_func_rect");
+
+      vis
+        .append("foreignObject")
+        .data(deriv_func_tags)
+        .attr("id", "deriv_func_equation")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin / 2)
+        .append("xhtml:div")
+        .attr("class", "deriv_func_text")
+        .html(function(d) {
+          return d.deriv_func_tex;
+        });
+
+      if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+        vis
+          .select("#func_equation")
+          .attr("width", MARGINS.right - rect_margin * 2)
+          .attr("height", boxmargin * 3);
+
+        vis
+          .select("#deriv_func_equation")
+          .attr("width", MARGINS.right - rect_margin * 2)
+          .attr("height", boxmargin * 3);
+      }
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 5)
+        .data(deriv_func_tags)
+        .attr("id", "deriv_func_range")
+        .attr("class", "deriv_func_text")
+        .text(function(d) {
+          return "值域: " + d.deriv_func_range;
+        });
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 6.3)
+        .data(deriv_func_tags)
+        .attr("id", "deriv_func_mono")
+        .attr("class", "deriv_func_text")
+        .style("colour", "blue")
+        .text(function(d) {
+          return "单调性: " + d.deriv_func_mono;
+        });
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 7.6)
+        .data(deriv_func_tags)
+        .attr("id", "deriv_func_contin")
+        .attr("class", "deriv_func_text")
+        .text(function(d) {
+          return "连续性: " + d.deriv_func_contin;
+        });
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 8.9)
+        .attr("id", "deriv_func_van")
+        .attr("class", "deriv_func_text")
+        .append("svg:tspan")
+        .text("梯度消失: ")
+        .append("svg:tspan")
+        .style("fill", "#00e600")
+        .text(deriv_func_tags[0].deriv_func_van);
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - boxmargin_horizontal)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 8.9)
+        .attr("id", "deriv_func_exp")
+        .attr("class", "deriv_func_text")
+        .append("svg:tspan")
+        .text("梯度爆炸: ")
+        .append("svg:tspan")
+        .style("fill", "#00e600")
+        .text(deriv_func_tags[0].deriv_func_exp);
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 10.3)
+        .attr("id", "deriv_func_sat")
+        .attr("class", "deriv_func_text")
+        .append("svg:tspan")
+        .text("神经元饱和: ")
+        .append("svg:tspan")
+        .style("fill", "#00e600")
+        .text(deriv_func_tags[0].deriv_func_sat);
+
+      vis
+        .append("text")
+        .attr("x", WIDTH - boxmargin_horizontal)
+        .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 10.3)
+        .attr("id", "deriv_func_dead")
+        .attr("class", "deriv_func_text")
+        .append("svg:tspan")
+        .text("神经元死亡: ")
+        .append("svg:tspan")
+        .style("fill", "red")
+        .text(deriv_func_tags[0].deriv_func_dead);
+
+      vis
+        .append("text")
+        .attr("x", MARGINS.left)
+        .attr("y", MARGINS.top + 30)
+        .attr("class", "legend")
+        .attr("id", "func_text")
+        .style("fill", "steelblue")
+        .on("click", function() {
+          // Determine if current line is visible
+          var active = func.active ? false : true,
+            newOpacity = active ? 0 : 1;
+          // Hide or show the elements
+          d3.select("#func").style("opacity", newOpacity);
+          d3.select("#func_text").style("opacity", active ? 0.5 : 1);
+          d3.select("#func_rect")
+            .transition()
+            .duration(1000)
+            .attr(
+              "height",
+              active ? 0 : (HEIGHT - MARGINS.top) / 2 - boxmargin
+            );
+          if (active) {
+            d3.selectAll(".func_text")
+              .transition()
+              .delay(function(d, i) {
+                return 400 - delay * i;
+              })
+              .style("opacity", active ? 0 : 1);
+          } else {
+            d3.selectAll(".func_text")
+              .transition()
+              .delay(function(d, i) {
+                return 300 + (delay * i) / 2;
+              })
+              .style("opacity", active ? 0 : 1);
+          }
+          // Update whether or not the elements are active
+          func.active = active;
+        })
+        .text("f (x)");
+
+      // Add the red line title
+      vis
+        .append("text")
+        .attr("x", MARGINS.left)
+        .attr("y", MARGINS.top + 30 + 30)
+        .attr("class", "legend")
+        .attr("id", "deriv_text")
+        .style("fill", "orange")
+        .on("click", function() {
+          // Determine if current line is visible
+          var active = deriv_func.active ? false : true,
+            newOpacity = active ? 0 : 1;
+          // Hide or show the elements
+          d3.select("#deriv_func").style("opacity", newOpacity);
+          d3.select("#deriv_text").style("opacity", active ? 0.5 : 1);
+          d3.select("#deriv_func_rect")
+            .transition()
+            .duration(1000)
+            .attr(
+              "height",
+              active ? 0 : (HEIGHT - MARGINS.top) / 2 - boxmargin
+            );
+          if (active) {
+            d3.selectAll(".deriv_func_text")
+              .transition()
+              .delay(function(d, i) {
+                return 400 - delay * i;
+              })
+              .style("opacity", active ? 0 : 1);
+          } else {
+            d3.selectAll(".deriv_func_text")
+              .transition()
+              .delay(function(d, i) {
+                return 250 + (delay * i) / 2.5;
+              })
+              .style("opacity", active ? 0 : 1);
+          }
+          // Update whether or not the elements are active
+          deriv_func.active = active;
+        })
+        .text("f '(x)");
+
+      d3.select(window).on("resize", function() {
+        vis = d3.select("#visualisation");
+        WIDTH = parseInt(
+          document.getElementById("browser_warning").offsetWidth
+        );
+        HEIGHT = parseInt(vis.style("height"));
+        MARGINS = {
+          top: HEIGHT / 25.0,
+          right: WIDTH / 2.5,
+          bottom: HEIGHT / 25.0,
+          left: WIDTH / 50.0
+        };
+        boxmargin = (HEIGHT - MARGINS.top) / 24.0;
+        rect_margin = MARGINS.right / 50.0;
+        (boxmargin_horizontal = MARGINS.right / 2.2),
+          (xRange = d3.scale
+            .linear()
+            .range([MARGINS.left, WIDTH - MARGINS.right])
+            .domain(axis_limits.slice(0, 2)));
+
+        yRange = d3.scale
+          .linear()
+          .range([HEIGHT - MARGINS.top, MARGINS.bottom])
+          .domain(axis_limits.slice(2, 4));
+
+        xAxis = d3.svg
+          .axis()
+          .scale(xRange)
+          .tickSize(5)
+          .tickSubdivide(true);
+
+        yAxis = d3.svg
+          .axis()
+          .scale(yRange)
+          .tickSize(5)
+          .orient("left")
+          .tickSubdivide(true);
+
+        vis
+          .select("#graph_xaxis")
+          .attr(
+            "transform",
+            "translate(0," + (HEIGHT - MARGINS.bottom + MARGINS.top) / 2 + ")"
+          )
+          .call(xAxis);
+
+        vis
+          .select("#graph_yaxis")
+          .attr(
+            "transform",
+            "translate(" + (WIDTH - MARGINS.right + MARGINS.left) / 2 + ",0)"
+          )
+          .call(yAxis);
+
+        vis
+          .selectAll(".tick")
+          .filter(function(d) {
+            return d === 0;
+          })
+          .remove();
+
+        lineFunc = d3.svg
+          .line()
+          .x(function(d) {
+            return xRange(d.x);
+          })
+          .y(function(d) {
+            return yRange(d.y);
+          })
+          .interpolate("linear");
+
+        vis
+          .select("#top_asymptote")
+          .attr(
+            "d",
+            lineFunc([
+              { x: axis_limits[0], y: asymptote_top },
+              { x: axis_limits[1], y: asymptote_top }
+            ])
+          );
+
+        vis
+          .select("#bottom_asymptote")
+          .attr(
+            "d",
+            lineFunc([
+              { x: axis_limits[0], y: asymptote_bottom },
+              { x: axis_limits[1], y: asymptote_bottom }
+            ])
+          );
+
+        //d3.select("#func").remove();
+
+        vis.select("#func").attr("d", lineFunc(lineData));
+
+        vis.select("#deriv_func").attr("d", lineFunc(lineData_deriv));
+
+        vis
+          .select("#func_rect")
+          .attr("x", WIDTH - MARGINS.right + rect_margin)
+          .attr("y", MARGINS.top)
+          .attr("width", MARGINS.right - rect_margin * 2.0)
+          .attr("height", (HEIGHT - MARGINS.top) / 2 - boxmargin);
+
+        vis
+          .select("#func_equation")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + boxmargin / 2);
+
+        vis
+          .select("#func_range")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + boxmargin * 5);
+
+        vis
+          .select("#func_mono")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + boxmargin * 6.3);
+
+        vis
+          .select("#func_contin")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + boxmargin * 7.6);
+
+        vis
+          .select("#func_origin")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + boxmargin * 8.9);
+
+        vis
+          .select("#func_symm")
+          .data(func_tags)
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + boxmargin * 10.2);
+
+        vis
+          .select("#func_ref")
+          .attr("x", WIDTH - boxmargin_horizontal / 1.7)
+          .attr("y", MARGINS.top + boxmargin * 10.2);
+
+        // derivative rectangle
+
+        vis
+          .select("#deriv_func_rect")
+          .attr("x", WIDTH - MARGINS.right + rect_margin)
+          .attr("y", MARGINS.top + HEIGHT / 2)
+          .attr("width", MARGINS.right - rect_margin * 2.0)
+          .attr("height", (HEIGHT - MARGINS.top) / 2 - boxmargin);
+
+        vis
+          .select("#deriv_func_equation")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin / 2);
+
+        vis
+          .select("#deriv_func_range")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 5);
+
+        vis
+          .select("#deriv_func_mono")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 6.3);
+
+        vis
+          .select("#deriv_func_contin")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 7.6);
+
+        vis
+          .select("#deriv_func_van")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 8.9);
+
+        vis
+          .select("#deriv_func_exp")
+          .attr("x", WIDTH - boxmargin_horizontal)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 8.9);
+
+        vis
+          .select("#deriv_func_sat")
+          .attr("x", WIDTH - MARGINS.right + rect_margin * 2.0)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 10.3);
+
+        vis
+          .select("#deriv_func_dead")
+          .attr("x", WIDTH - boxmargin_horizontal)
+          .attr("y", MARGINS.top + HEIGHT / 2 + boxmargin * 10.3);
+      });
+
+      function InitChart() {
+        var myClasses = document.getElementById("plot_inputs"),
+          mylabels = document.getElementsByTagName("label");
+        for (i = 0; i < myClasses.length; i++) {
+          myClasses[i].style.display = "none";
+          mylabels[i].style.display = "none";
+        }
+        document.getElementById("rrelu_button").style.display = "none";
+        var activ_func = document.getElementById("select_activ").value;
+
+        lineData = [];
+        lineData_deriv = [];
+
+        asymptote_top = 5;
+        asymptote_bottom = -5;
+
+        switch (activ_func) {
+          case "relu":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
+                func_range: "[0, ∞)",
+                func_contin: "C" + "⁰",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "不对称",
+                func_ref: "http://dl.acm.org/citation.cfm?id=3104322.3104425",
+                func_primer:
+                  "<b>整流线性单元</b> (<b>ReLU</b>)被认为是神经网络中最常见的激活函数。它保留了阶梯函数的生物学动机（神经元仅在输入超过阈值时触发），但在正数输入处具有非零导数，这允许基于梯度的学习（尽管导数在0时未定义）。ReLU 函数被认为有生物上的解释性，比如单侧抑制、宽兴奋边界(即兴奋程度 也可以非常高)。它的计算速度也很快，因为函数及其导数都不涉及复杂的数学运算。然而，由于在非正输入时导数为0，ReLU可能会受到缓慢学习甚至死神经元的影响，其中具有负值输入的神经元由于零值梯度而无法更新其权重，使得它们对于剩下的训练阶段沉默。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
+                deriv_func_range: "{0,1}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "否",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "是"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: (i > 0) * i
+              });
+              lineData_deriv.push({
+                x: i,
+                y: i >= 0
+              });
+            }
+            break;
+          case "step":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
+                func_range: "{0, 1}",
+                func_contin: "C" + "⁻¹",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "不对称",
+                func_ref: "",
+                func_primer:
+                "这种激活函数更具理论性而非实际性, 包括<b>Step</b> (也包括, <b>Binary Step</b> 或 <b>Heaviside</b>) 模仿生物神经元的全有或全无特性。它对神经网络没有用，因为它的导数是零（除了0，它是未定义的）。这意味着基于梯度的优化方法是不可行的"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}0 & \\text{for } x\\neq0\\\\? & \\text{for } x=0\\end{cases} $",
+                deriv_func_range: "{0}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "否",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "是"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.3, 1.3];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: i >= 0
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 0
+              });
+            }
+            break;
+
+          case "sign":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}1 & x>0\\\\-1 &  x<0 \\\\0 &  x=0\\end{cases} $",
+                func_range: "{-1,0, 1}",
+                func_contin: "C" + "⁻¹",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "反对称",
+                func_ref: "",
+                func_primer:
+                  "The <b>Signum</b> (or just <b>Sign</b>) is a scaled version of the binary step activation function. It takes the value -1 and 1 for negative and postive values, respectively, and zero at the origin. Though lacking the biological motivation of the step function, the function is anti-symmetrical, which is thought to be a favourable trait for an activation function."
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}0 & \\text{for } x\\neq0\\\\? & \\text{for } x=0\\end{cases} $",
+                deriv_func_range: "{0}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "否",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "是"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              if (i == 0) {
+                lineData.push({
+                  x: i,
+                  y: 0
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: 2 * (i > 0) - 1
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 0
+                });
+              }
+            }
+            break;
+
+          case "identity":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x) = x\\end{align*}$",
+                func_range: "(-∞, ∞)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "反对称",
+                func_ref: "",
+                func_primer:
+                  "使用 <b>Identity</b> 使用Identity激活功能，节点输出等于其输入。它非常适合基础行为是线性的任务，类似于线性回归。当存在非线性时，单独的激活函数是不够的，尽管它仍然可以用作最终输出节点上的激活函数以用于类似回归的任务。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex: "$\\begin{align*}f'(x) = 1\\end{align*}$",
+                deriv_func_range: "{1}",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "✅",
+                deriv_func_symm: "✅",
+                deriv_func_van: "否",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: i
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 1
+              });
+            }
+            break;
+          case "sigmoid":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x) = \\frac{1}{1 + e^{-x}} \\end{align*}$",
+                func_range: "(0, 1)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "不对称",
+                func_ref: "",
+                func_primer:
+                  "<b>Logistic Sigmoid</b>（或更常见的只是Sigmoid）激活函数从逻辑回归中的角色（0到1）中众所周知，它将概率概念引入神经网络。它的导数非零且易于计算（它是其原始输出的函数）。然而，由于Tanh是反对称的并且以原点为中心。它逐渐被Tanh取代。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x) &= \\frac{e^{-x}}{(1+e^{-x})^2} \\\\&= f(x)(1-f(x)) \\end{align*}$",
+                deriv_func_range: "(0,0.25)",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              asymptote_top = 1;
+              temp_sigmoid = 1.0 / (1.0 + Math.exp(-i));
+              lineData.push({
+                x: i,
+                y: temp_sigmoid
+              });
+              lineData_deriv.push({
+                x: i,
+                y: temp_sigmoid * (1 - temp_sigmoid)
+              });
+            }
+            break;
+          case "arctan":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x) =\\tan^{-1}(x) \\end{align*}$",
+                func_range: "(-π/2, π/2)",
+                func_contin: "C" + "∞",
+                func_mono: "❌",
+                func_origin: "✅",
+                func_symm: "对称",
+                func_ref: "",
+                func_primer:
+                  "视觉上和Tanh类似，更为平坦。默认值域， (-π/2, π/2)。导数很慢趋近于0，但导数计算量大于Tanh。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)=\\frac{1}{x^2+1} \\end{align*}$",
+                deriv_func_range: "(0,1]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.6, 1.6];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              asymptote_top = Math.PI / 2;
+              asymptote_bottom = -Math.PI / 2;
+              lineData.push({
+                x: i,
+                y: Math.atan(i)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 1 / (Math.pow(i, 2) + 1)
+              });
+            }
+            break;
+          case "softsign":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x)=\\frac{x}{1+|x|} \\end{align*}$",
+                func_range: "(0, ∞)",
+                func_contin: "C¹",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "反对称",
+                func_ref:
+                  "http://www.iro.umontreal.ca/~lisa/publications2/index.php/attachments/single/205",
+                func_primer:
+                  "<b>Softsign</b> 和Tanh类似，默认值域， (-1, 1)。导数很慢趋近于0，但导数计算量大于Tanh。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)=\\frac{1}{(1+|x|)^2} \\end{align*}$",
+                deriv_func_range: "(0,1]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-6, 6, -1.6, 1.6];
+            for (var i = -6; i <= 6; i = i + 0.002) {
+              asymptote_top = 1;
+              asymptote_bottom = -1;
+              lineData.push({
+                x: i,
+                y: i / (1 + Math.abs(i))
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 1 / Math.pow(1 + Math.abs(i), 2)
+              });
+            }
+            break;
+          case "softplus":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x)=\\ln(1+e^x) \\end{align*}$",
+                func_range: "(0, ∞)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "不对称",
+                func_ref:
+                  "http://proceedings.mlr.press/v15/glorot11a/glorot11a.pdf",
+                func_primer:
+                  "ReLu的平滑替代品，定义域上连续可导；但是不关于0对称，由于导数总<1，可能会梯度消失。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)=\\frac{1}{1+e^{-x}}\\end{align*}$",
+                deriv_func_range: "(0,1)",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "✅",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.log(1 + Math.exp(i), 2)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 1 / (1 + Math.exp(-i))
+              });
+            }
+            break;
+
+          case "bentid":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x)=\\frac{\\sqrt{x^2 + 1} - 1}{2} + x \\end{align*}$",
+                func_range: "(-∞, ∞)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "不对称",
+                func_ref: "",
+                func_primer:
+                  "A sort of compromise between Identity and ReLU activation, <b>Bent Identity</b> allows non-linear behaviours, while its non-zero derivative promotes efficient learning and overcomes the issues of dead neurons associated with ReLU. As its derivative can return values either side of 1, it can be susceptible to both 梯度爆炸 and 梯度消失 gradients."
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)=\\frac{x}{2\\sqrt{x^2 + 1}} + 1\\end{align*}$",
+                deriv_func_range: "(0.5, 1.5)",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "✅",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "是",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: (Math.sqrt(Math.pow(i, 2) + 1) - 1) / 2.0 + i
+              });
+              lineData_deriv.push({
+                x: i,
+                y: i / (2 * Math.sqrt(Math.pow(i, 2) + 1)) + 1
+              });
+            }
+            break;
+
+          case "sinusoid":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x)=\\sin(x) \\end{align*}$",
+                func_range: "[-1, -1]",
+                func_contin: "C" + "∞",
+                func_mono: "❌",
+                func_origin: "✅",
+                func_symm: "反对称",
+                func_ref: "",
+                func_primer:
+                  "<b>Sinusoid</b> (or simply <b>Sin</b>)， 值域[-1,1], 原点为中心，反对称，连续可导."
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex: "$\\begin{align*}f'(x)=\\cos(x)\\end{align*}$",
+                deriv_func_range: "[-1, -1]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.sin(i)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: Math.cos(i)
+              });
+            }
+            break;
+
+          case "cos":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x)=\\cos(x) \\end{align*}$",
+                func_range: "[-1, -1]",
+                func_contin: "C" + "∞",
+                func_mono: "❌",
+                func_origin: "❌",
+                func_symm: "对称",
+                func_ref: "",
+                func_primer:
+                  "<b>Cos</b> (or <b>Cosine</b>) 值域[-1,1], 轴对称，连续可导."
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex: "$\\begin{align*}f'(x)=\\-sin(x)\\end{align*}$",
+                deriv_func_range: "[-1, -1]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.cos(i)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: -Math.sin(i)
+              });
+            }
+            break;
+
+          case "sinc":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x)=\\begin{cases}1 & \\text{for } x = 0\\\\\\frac{\\sin(x)}{x} & \\text{for } x \\ne 0\\end{cases}$",
+                func_range: "[≈-0.2172,1]",
+                func_contin: "C" + "∞",
+                func_mono: "❌",
+                func_origin: "❌",
+                func_symm: "对称",
+                func_ref:
+                  "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/2760/1/Function-approximation-using-a-sinc-neural-network/10.1117/12.235959.short?SSO=1",
+                func_primer:
+                  "<b>Sinc</b> (全名<b>Cardinal Sine</b> )代表了傅立叶变换的矩形函数。作为一种激活函数，它可以完全可导和对称，但它很容易梯度消失。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x)=\\begin{cases}0 & \\text{for } x = 0\\\\\\frac{\\cos(x)}{x} - \\frac{\\sin(x)}{x^2} & \\text{for } x \\ne 0\\end{cases}$",
+                deriv_func_range: "(≈-0.4362, ≈0.4362)",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-6, 6, -1.5, 1.5];
+            for (var i = -6; i <= 6; i = i + 0.002) {
+              if (i == 0) {
+                lineData.push({
+                  x: i,
+                  y: Math.sin(i) / i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: Math.sin(i) / i
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: Math.sin(i) / i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: Math.cos(i) / i - Math.sin(i) / Math.pow(i, 2)
+                });
+              }
+            }
+            break;
+
+          case "tanh":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x)&=\\tanh(x)\\\\&=\\frac{2}{1+e^{-2x}}-1\\end{align*}$",
+                func_range: "(-1, -1)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "反对称",
+                func_ref: "",
+                func_primer:
+                  "逐渐取代logistic sigmoid函数作为分类任务的激活函数，Tanh（Hyperbolic Tan）具有神经网络中有利的各种特征。它完全可微，以零和反对称为中心。可以采用更平坦的变形（log-log，softsign，对称sigmoid等），减轻缓慢学习和/或消失梯度的现象。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)&=1-\\tanh^2(x)\\\\&=1-f(x)^2\\end{align*}$",
+                deriv_func_range: "(0, 1]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            asymptote_top = 1;
+            asymptote_bottom = -1;
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.tanh(i)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 1 - Math.pow(Math.tanh(i), 2)
+              });
+            }
+            break;
+
+          case "lctanh":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x)&=1.7519\\tanh(\\frac{2}{3}x)\\end{align*}$",
+                func_range: "(-1.7519 , 1.7519)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "反对称",
+                func_ref: "http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf",
+                func_primer:
+                  "<b>LeCun Tanh</b> (也叫<b>Scaled Tanh</b>)，Tanh的缩放版本. 有一些提升学习能力的特性: f(± 1) = ±1; 在x=1处二阶导最大;有效增益接近1. 可以查看参考文献."
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)&=1.7519*\\frac{2}{3}(1-\\tanh^2(\\frac{2}{3}x))\\\\&=1.7519*\\frac{2}{3}-\\frac{2}{3*1.7519}f(x)^2\\end{align*}$",
+                deriv_func_range: "(0, 1.167933]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "是",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -2, 2];
+            asymptote_top = 1.7519;
+            asymptote_bottom = -1.7519;
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: 1.7519 * Math.tanh((2 * i) / 3.0)
+              });
+              lineData_deriv.push({
+                x: i,
+                y:
+                  (2.0 / 3.0) *
+                  1.7519 *
+                  (1 - Math.pow(Math.tanh((2 * i) / 3.0), 2))
+              });
+            }
+            break;
+
+          case "leakyrelu":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\0.01x & \\text{for } x<0\\end{cases} $",
+                func_range: "(-∞, ∞)",
+                func_contin: "C" + "⁰",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "不对称",
+                func_ref:
+                  "https://pdfs.semanticscholar.org/367f/2c63a6f6a10b3b64b8729d601e69337ee3cc.pdf",
+                func_primer:
+                  "经典ReLU的变形，Leaky ReLU对于负值输入，有非常小的斜率。因为导数总是非零，允许基于梯度的学习（无论多么慢），减轻了死亡神经元现象。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0.01 & \\text{for } x<0\\end{cases} $",
+                deriv_func_range: "{0.01, 1}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              if (i < 0) {
+                lineData.push({
+                  x: i,
+                  y: 0.01 * i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 0.01
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 1
+                });
+              }
+            }
+            break;
+          case "gaussian":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x)=e^{-x^2}\\end{align*}$",
+                func_range: "(0, 1]",
+                func_contin: "C" + "∞",
+                func_mono: "❌",
+                func_origin: "❌",
+                func_symm: "对称",
+                func_ref: "",
+                func_primer:
+                  "不要与径向基函数网络（RBFN）中常用的高斯核混淆，高斯函数不太受多层感知器类型模型的欢迎。尽管一阶导数快速收敛为零，但它完全可微分且对称。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)&=-2xe^{-x^2}\\\\ &= -2x f(x)\\end{align*}$",
+                deriv_func_range: "(-∞, &infin)",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.exp(-Math.pow(i, 2))
+              });
+              lineData_deriv.push({
+                x: i,
+                y: -2 * i * Math.exp(-Math.pow(i, 2))
+              });
+            }
+            break;
+          case "absolute":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x)=|x|\\end{align*}$",
+                func_range: "[0, ∞)",
+                func_contin: "C" + "⁰",
+                func_mono: "❌",
+                func_origin: "❌",
+                func_symm: "对称",
+                func_ref: "",
+                func_primer:
+                  "顾名思义，Absolute激活函数返回输入的绝对值。它的导数很容易计算，除了0以外的任何地方定义。由于导数的大小等于1，这种激活函数不会受到消失/爆炸梯度的影响。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}-1 & \\text{for } x<0\\\\1 & \\text{for } x>0\\\\? & \\text{for } x=0\\end{cases}$",
+                deriv_func_range: "{-1, 1}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "否",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -2, 2];
+
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.abs(i)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: 2 * (i >= 0) - 1
+              });
+            }
+            break;
+
+          case "probit":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x)&=\\Phi(x)\\\\&=\\sqrt{2}\\,\\operatorname{erf}^{-1}(2x-1)\\end{align*}$",
+                func_range: "(-∞, ∞)",
+                func_contin: "C∞",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "❌",
+                func_ref: "",
+                func_primer: ""
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)&=\\sqrt{2\\pi}\\exp^{[\\operatorname{erf}^{-1}(2x-1)]^2}\\\\&=\\sqrt{2}\\,\\operatorname{erf}^{-1}(2x-1)\\end{align*}$",
+                deriv_func_range: "(0, 1]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "否",
+                deriv_func_exp: "❌",
+                deriv_func_sat: "❌",
+                deriv_func_dead: "❌"
+              }
+            ];
+
+            axis_limits = [-1, 1, -3, 3];
+            alert(Math.exp(-Math.pow(1, 2) / 2) / Math.sqrt(2 * Math.PI));
+            for (var i = 0.0005; i <= 1.0005; i = i + 0.0005 / 3) {
+              temp_val = Math.sqrt(2) * erfINV(2 * i - 1);
+              lineData.push({
+                x: i,
+                y: temp_val
+              });
+              lineData_deriv.push({
+                x: i,
+                y: Math.exp(-Math.pow(temp_val, 2) / 2) / Math.sqrt(2 * Math.PI)
+              });
+            }
+            break;
+          case "hardsigmoid":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}0 & \\text{for } x<-2.5\\\\0.2x + 0.5 & \\text{for } -2.5\\geq x\\leq 2.5 \\\\1 & \\text{for } x>2.5\\end{cases} $",
+                func_range: "[0,1]",
+                func_contin: "C" + "⁰",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "不对称",
+                func_ref: "https://arxiv.org/pdf/1603.00391.pdf",
+                func_primer:
+                  "<b>Hard Sigmoid</b>是Logistic Sigmoid激活函数的分段线性近似。它更容易计算，这使得学习速度更快。也存在零值一阶导数， 导致死神经元/慢学习（参见ReLU）。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}0 & \\text{for } x<-2.5\\\\0.2 & \\text{for } -2.5\\geq x\\leq 2.5 \\\\0 & \\text{for } x>2.5\\end{cases} $",
+                deriv_func_range: "{0, 0.2}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "是"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              if ((i >= -2.5) & (i <= 2.5)) {
+                lineData.push({
+                  x: i,
+                  y: 0.2 * i + 0.5
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 0.2
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: i > 2.5
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 0
+                });
+              }
+            }
+            break;
+          case "hardtanh":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}-1 & \\text{for } x<-1\\\\x & \\text{for } -1\\geq x\\leq 1 \\\\1 & \\text{for } x>1\\end{cases} $",
+                func_range: "[-1,1]",
+                func_contin: "C" + "⁰",
+                func_mono: "✅",
+                func_origin: "✅",
+                func_symm: "反对称",
+                func_ref: "https://arxiv.org/pdf/1603.00391.pdf",
+                func_primer:
+                  "<b>HardTanh</b> 是Tanh激活函数的分段线性近似。它更容易计算，这使得学习速度更快。也存在零值一阶导数， 导致死神经元/慢学习（参见ReLU）。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}0 & \\text{for } x<-1\\\\1 & \\text{for } -1\\geq x\\leq 1 \\\\0 & \\text{for } x>1\\end{cases} $",
+                deriv_func_range: "{0,1}",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "否",
+                deriv_func_exp: "否",
+                deriv_func_sat: "否",
+                deriv_func_dead: "是"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.max(-1, Math.min(1, i))
+              });
+              lineData_deriv.push({
+                x: i,
+                y: i >= -1 && i <= 1
+              });
+            }
+            break;
+
+          case "symmsigmoid":
+            func_tags = [
+              {
+                func_tex:
+                  "$\\begin{align*}f(x)&=\\tanh(x/2)\\\\&=\\frac{1-e^{-x}}{1+e^{-x}}\\end{align*}$",
+                func_range: "(-1, -1)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "对称",
+                func_ref: "",
+                func_primer:
+                  "对称Sigmoid是Tanh激活的另一种替代方法（它实际上相当于Tanh激活，输入减半）。像Tanh一样，它是反对称的，零中心，可微分并且值域在[-1, 1]。它更扁平的形状和更缓慢下降的导数表明它可以更有效地学习。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)&=0.5(1-\\tanh^2(x/2))\\\\&=0.5(1-f(x)^2)\\end{align*}$",
+                deriv_func_range: "(0, 0.5]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "✅",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            asymptote_top = 1;
+            asymptote_bottom = -1;
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              lineData.push({
+                x: i,
+                y: Math.tanh(i / 2)
+              });
+              lineData_deriv.push({
+                x: i,
+                y: (1 - Math.pow(Math.tanh(i / 2), 2)) / 2
+              });
+            }
+            break;
+          case "loglog":
+            func_tags = [
+              {
+                func_tex: "$\\begin{align*}f(x)=1-e^{-e^{x}}\\end{align*}$",
+                func_range: "(0, 1)",
+                func_contin: "C" + "∞",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "不对称",
+                func_ref: "",
+                func_primer:
+                  "函数值域(0, 1), <b>Complementary Log Log</b> (or just <b>Log Log</b>) 是sigmoid的很好的替代品. 更快饱和且在原点函数值超过0.5"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$\\begin{align*}f'(x)=e^{x}(e^{-e^{x}}) = e^{x-e^{x}}\\end{align*}$",
+                deriv_func_range: "(0, 1/e]",
+                deriv_func_contin: "✅",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            axis_limits = [-3, 3, -1.5, 1.5];
+            asymptote_top = 1;
+            for (var i = -3; i <= 3; i = i + 0.001) {
+              temp_val = Math.exp(-Math.exp(i));
+              lineData.push({
+                x: i,
+                y: 1 - temp_val
+              });
+              lineData_deriv.push({
+                x: i,
+                y: Math.exp(i) * temp_val
+              });
+            }
+            break;
+          case "prelu":
+            document.getElementById("alpha_input_label").innerHTML = "α";
+            document.getElementById("alpha_input_label").style.display =
+              "block";
+            document.getElementById("alpha_input").style.display = "block";
+            var alpha = parseFloat(
+              document.getElementById("alpha_input").value
+            );
+            func_tags = [
+              {
+                func_tex:
+                  "$f_{\\alpha}(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\\\alpha x & \\text{for } x<0\\end{cases} $",
+                func_range: "(-∞, ∞) α <0, [0, ∞) α ≥0",
+                func_contin: "C" + "⁰" + " (iff α ≠ 1)",
+                func_mono: "✅ (iff α ≥0)",
+                func_origin: "❌ iff α≠1",
+                func_symm: "非对称 (iff |α|≠1)",
+                func_ref: "https://arxiv.org/abs/1502.01852",
+                func_primer:
+                  "<b>Parameteric Rectified Linear Unit</b> (<b>PReLU</b>)参数整流线性单元（PReLU），它与RReLU和Leaky ReLU有一些相似之处，因为它包含负值输入的线性项。关键的区别在于，该线的斜率实际上是作为参数在模型训练期间学习的。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'_{\\alpha}(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\\\alpha & \\text{for } x<0\\end{cases} $",
+                deriv_func_range: "{α, 1}",
+                deriv_func_contin: "❌ (iff α ≠ 1)",
+                deriv_func_mono: "❌ (iff α ≠ 1)",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是 (iff α<1)",
+                deriv_func_exp: "否 (iff α<1)",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否 (iff α≠0)"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              if (i < 0) {
+                lineData.push({
+                  x: i,
+                  y: alpha * i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: alpha
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: i
+                });
+                0;
+                lineData_deriv.push({
+                  x: i,
+                  y: 1
+                });
+              }
+            }
+            break;
+
+          case "rrelu":
+            document.getElementById("rrelu_button").style.display = "block";
+            var alpha = 6 * Math.random() - 3;
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\\\alpha x & \\text{for } x<0\\end{cases} $",
+                func_range: "(-∞, ∞) α <0, [0, ∞) α ≥0",
+                func_contin: "C" + "⁰" + " (iff α ≠ 1)",
+                func_mono: "✅ (iff α ≥0)",
+                func_origin: "❌ iff α≠1",
+                func_symm: "Asymetrical (iff |α|≠1)",
+                func_ref: "https://arxiv.org/abs/1505.00853",
+                func_primer:
+                  "<b>Randomized Leaky Rectified Linear Unit</b> (<b>RReLU</b>), 关键的区别在于该线的斜率是为每个节点随机分配的（通常来自均匀分布）"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\\\alpha & \\text{for } x<0\\end{cases} $",
+                deriv_func_range: "{α, 1}",
+                deriv_func_contin: "❌ (iff α ≠ 1)",
+                deriv_func_mono: "❌ (iff α ≠ 1)",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是 (iff α<1)",
+                deriv_func_exp: "否 (iff α<1)",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否 (iff α≠0)"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              if (i < 0) {
+                lineData.push({
+                  x: i,
+                  y: alpha * i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: alpha
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 1
+                });
+              }
+            }
+            break;
+          case "elu":
+            document.getElementById("alpha_input_label").innerHTML = "α";
+            document.getElementById("alpha_input_label").style.display =
+              "block";
+            document.getElementById("alpha_input").style.display = "block";
+            var alpha = parseFloat(
+              document.getElementById("alpha_input").value
+            );
+            asymptote_bottom = -alpha;
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) = \\begin{cases}\\alpha(e^x - 1) & \\text{for } x < 0\\\\x & \\text{for } x \\ge 0\\end{cases} $",
+                func_range: "(-α, ∞) α <0, [0, ∞) α ≥0",
+                func_contin: "C" + "⁰" + " (iff α ≠ 1)",
+                func_mono: "✅ (iff α ≥0)",
+                func_origin: "❌ iff α≠1",
+                func_symm: "不对称",
+                func_ref: "https://arxiv.org/abs/1511.07289",
+                func_primer:
+                  "<b>Exponential Linear Unit</b> (<b>ELU</b>) 包含负指数项，防止神经元死亡。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) = \\begin{cases} \\alpha e^{x} = f(x) + \\alpha & \\text{for } x < 0\\\\1 & \\text{for } x \\ge 0\\end{cases}$",
+                deriv_func_range: "{(0, α] ∪ 1}",
+                deriv_func_contin: "❌ (unless α = 1)",
+                deriv_func_mono: "✅ (unless |α|>1)",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "否 (iff α<1)",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否 (iff α≠0)"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              if (i < 0) {
+                temp_val = alpha * (Math.exp(i) - 1);
+                lineData.push({
+                  x: i,
+                  y: temp_val
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: temp_val + alpha
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: i
+                });
+                0;
+                lineData_deriv.push({
+                  x: i,
+                  y: 1
+                });
+              }
+            }
+            break;
+          case "selu":
+            func_tags = [
+              {
+                func_tex:
+                  "$f(x) = \\lambda \\begin{cases}\\alpha(e^x - 1) & \\text{for } x < 0\\\\x & \\text{for } x \\ge 0 \\end{cases}\\\\\\text{ with } \\lambda = 1.0507, \\alpha = 1.67326 $",
+                func_range: "(-λα, ∞)",
+                func_contin: "C" + "⁰",
+                func_mono: "✅",
+                func_origin: "❌",
+                func_symm: "不对称",
+                func_ref: "https://arxiv.org/abs/1706.02515",
+                func_primer:
+                  "<b>Scaled Exponential Linear Unit</b> (<b>SELU</b>) ，ELU的变形, 但固定 λ = 1.0507,  α=1.67326. 这些值使得输出信号均值为0，方差为1，是自归一化神经网络的基础(Self-否rmalising Neural Networks, SNNs)."
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'(x) = \\begin{cases}\\lambda\\alpha e^{x} = \\lambda(f(x) + \\alpha) & \\text{for } x < 0\\\\\\lambda & \\text{for } x \\ge 0\\end{cases}$",
+                deriv_func_range: "(0, λα)",
+                deriv_func_contin: "❌",
+                deriv_func_mono: "❌",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是",
+                deriv_func_exp: "是",
+                deriv_func_sat: "是",
+                deriv_func_dead: "否"
+              }
+            ];
+
+            asymptote_bottom = -1.0507 * 1.67326;
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              if (i < 0) {
+                temp_val = 1.0507 * 1.67326 * (Math.exp(i) - 1);
+                lineData.push({
+                  x: i,
+                  y: temp_val
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 1.0507 * (temp_val + 1.67326)
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: 1.0507 * i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 1.0507
+                });
+              }
+            }
+            break;
+          case "srelu":
+            document.getElementById("alpha_input").style.display = "block";
+            document.getElementById("alpha_input_label").style.display =
+              "block";
+            document.getElementById("alpha_input_r").style.display = "block";
+            document.getElementById("alpha_input_r_label").style.display =
+              "block";
+            document.getElementById("t_input_l").style.display = "block";
+            document.getElementById("t_input_l_label").style.display = "block";
+            document.getElementById("t_input_r").style.display = "block";
+            document.getElementById("t_input_r_label").style.display = "block";
+            var alpha_l = parseFloat(
+              document.getElementById("alpha_input").value
+            );
+            var alpha_r = parseFloat(
+              document.getElementById("alpha_input_r").value
+            );
+            var t_l = parseFloat(document.getElementById("t_input_l").value);
+            var t_r = parseFloat(document.getElementById("t_input_r").value);
+
+            document.getElementById("alpha_input_label").innerHTML =
+              "α<sub>l</sub>";
+
+            func_tags = [
+              {
+                func_tex:
+                  "$f_{t_l,a_l,t_r,a_r}(x) = \\begin{cases}t_l + a_l (x - t_l) & \\text{for } x \\le t_l\\\\x & \\text{for } t_l < x < t_r\\\\t_r + a_r (x - t_r) & \\text{for } x \\ge t_r\\end{cases}$",
+                func_range: "(-∞, ∞)",
+                func_contin: "C" + "⁰" + " (unless α_l=a_r=1)",
+                func_mono: "✅ (unless ∃ α<0)",
+                func_origin: "✅ (unless t_l>0 or t_r<0)",
+                func_symm: "Asymmetrical (generally)",
+                func_ref: "https://arxiv.org/abs/1512.07030",
+                func_primer:
+                  "<b>S-shaped Rectified Linear Activation Unit</b> (<b>SReLU</b>) ，由3段线性函数组成. 这些函数及其导数有相同的交点，在学习过程中学习这些参数。"
+              }
+            ];
+
+            deriv_func_tags = [
+              {
+                deriv_func_tex:
+                  "$f'_{t_l,a_l,t_r,a_r}(x) = \\begin{cases}a_l & \\text{for } x \\le t_l\\\\1   & \\text{for } t_l < x < t_r\\\\a_r & \\text{for } x \\ge t_r\\end{cases}$",
+                deriv_func_range: "{α_l, α_r, 1}",
+                deriv_func_contin: "❌ (unless α_l=α_r=1)",
+                deriv_func_mono: "❌ (unless α_l≤1 & α_r≥1)",
+                deriv_func_symm: "❌",
+                deriv_func_van: "是 (iff ∃ α<1)",
+                deriv_func_exp: "是 (iff ∃ α>1)",
+                deriv_func_sat: "否",
+                deriv_func_dead: "否 (iff ∄ α=0)"
+              }
+            ];
+
+            axis_limits = [-3, 3, -3, 3];
+            for (var i = -3; i < 3; i = i + 0.001) {
+              if (i <= t_l) {
+                lineData.push({
+                  x: i,
+                  y: t_l + alpha_l * (i - t_l)
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: alpha_l
+                });
+              } else if (i >= t_r) {
+                lineData.push({
+                  x: i,
+                  y: t_r + alpha_r * (i - t_r)
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: alpha_r
+                });
+              } else {
+                lineData.push({
+                  x: i,
+                  y: i
+                });
+                lineData_deriv.push({
+                  x: i,
+                  y: 1
+                });
+              }
+            }
+            break;
+        }
+
+        xRange.domain(axis_limits.slice(0, 2));
+        yRange.domain(axis_limits.slice(2, 4));
+
+        var vis = d3.select("#visualisation");
+
+        var lineFunc = d3.svg
+          .line()
+          .x(function(d) {
+            return xRange(d.x);
+          })
+          .y(function(d) {
+            return yRange(d.y);
+          })
+          .interpolate("linear");
+
+        var axis_ratio =
+          axis_limits[1] -
+          axis_limits[0] -
+          (axis_limits[3] - axis_limits[2]) / (axis_limits[1] - axis_limits[0]);
+
+        vis
+          .select("#func") // change the line
+          .transition()
+          .duration(1000)
+          .attr("d", lineFunc(lineData));
+
+        vis
+          .select("#deriv_func") // change the line
+          .transition()
+          .duration(1000)
+          .attr("d", lineFunc(lineData_deriv));
+
+        vis
+          .select(".y.axis") // change the y axis
+          .transition()
+          .duration(1000)
+          .call(yAxis);
+
+        vis
+          .select(".x.axis") // change the x axis
+          .transition()
+          .duration(1000)
+          .call(xAxis);
+
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]],
+            processEscapes: true
+          }
+        });
+
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
+        vis
+          .select("#func_equation")
+          .select("div")
+          .transition()
+          .text(func_tags[0].func_tex);
+
+        vis
+          .select("#deriv_func_equation")
+          .select("div")
+          .text(deriv_func_tags[0].deriv_func_tex);
+
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
+        vis
+          .select("#func_contin")
+          .transition()
+          .text("连续性: " + func_tags[0].func_contin);
+
+        vis
+          .select("#func_symm")
+          .transition()
+          .text("对称性: " + func_tags[0].func_symm);
+
+        vis
+          .select("#func_range")
+          .transition()
+          .text("值域: " + func_tags[0].func_range);
+
+        vis
+          .select("#func_mono")
+          .transition()
+          .text("单调性: " + func_tags[0].func_mono);
+
+        vis
+          .select("#func_origin")
+          .transition()
+          .text("原点恒等: " + func_tags[0].func_origin);
+
+        if (func_tags[0].func_ref == "") {
+          vis.select("#func_ref").html("");
+        } else {
+          vis
+            .select("#func_ref")
+            .html(
+              '<a href="' +
+                func_tags[0].func_ref +
+                '" target="_blank" style="fill:blue">参考</a>'
+            );
+        }
+
+        // update derivative info table
+
+        vis
+          .select("#deriv_func_contin")
+          .transition()
+          .text("连续性: " + deriv_func_tags[0].deriv_func_contin);
+
+        vis
+          .select("#deriv_func_range")
+          .transition()
+          .text("值域: " + deriv_func_tags[0].deriv_func_range);
+
+        vis
+          .select("#deriv_func_mono")
+          .transition()
+          .text("单调性: " + deriv_func_tags[0].deriv_func_mono);
+
+        vis
+          .select("#deriv_func_origin")
+          .transition()
+          .text("原点恒等: " + deriv_func_tags[0].deriv_func_origin);
+
+        vis
+          .select("#deriv_func_symm")
+          .transition()
+          .text("原点恒等: " + deriv_func_tags[0].deriv_func_symm);
+
+        // update asymptote lines
+
+        vis
+          .select("#top_asymptote")
+          .transition()
+          .duration(1000)
+          .attr(
+            "d",
+            lineFunc([
+              { x: axis_limits[0], y: asymptote_top },
+              { x: axis_limits[1], y: asymptote_top }
+            ])
+          );
+
+        vis
+          .select("#bottom_asymptote")
+          .transition()
+          .duration(1000)
+          .attr(
+            "d",
+            lineFunc([
+              { x: axis_limits[0], y: asymptote_bottom },
+              { x: axis_limits[1], y: asymptote_bottom }
+            ])
+          );
+
+        vis
+          .selectAll(".tick")
+          .filter(function(d) {
+            return d === 0;
+          })
+          .remove();
+
+        document.getElementById("func_primer").innerHTML =
+          func_tags[0].func_primer;
+
+        if (
+          activ_func == "srelu" ||
+          activ_func == "prelu" ||
+          activ_func == "rrelu" ||
+          activ_func == "elu"
+        ) {
+          vis
+            .select("#deriv_func_exp")
+            .select("tspan")
+            .text("梯度爆炸: ")
+            .append("svg:tspan")
+            .style(
+              "fill",
+              deriv_func_tags[0].deriv_func_exp.indexOf("是") > -1
+                ? "red"
+                : "#00e600"
+            )
+            .text(deriv_func_tags[0].deriv_func_exp);
+
+          vis
+            .select("#deriv_func_van")
+            .select("tspan")
+            .text("梯度消失: ")
+            .append("svg:tspan")
+            .style(
+              "fill",
+              deriv_func_tags[0].deriv_func_van.indexOf("是") > -1
+                ? "red"
+                : "#00e600"
+            )
+            .text(deriv_func_tags[0].deriv_func_van);
+        } else {
+          vis
+            .select("#deriv_func_exp")
+            .select("tspan")
+            .text("梯度爆炸: ")
+            .append("svg:tspan")
+            .style(
+              "fill",
+              deriv_func_tags[0].deriv_func_exp.indexOf("是") > -1
+                ? "red"
+                : "#00e600"
+            )
+            .text(deriv_func_tags[0].deriv_func_exp);
+
+          vis
+            .select("#deriv_func_van")
+            .select("tspan")
+            .text("梯度消失: ")
+            .append("svg:tspan")
+            .style(
+              "fill",
+              deriv_func_tags[0].deriv_func_van.indexOf("是") > -1
+                ? "red"
+                : "#00e600"
+            )
+            .text(deriv_func_tags[0].deriv_func_van);
+        }
+        vis
+          .select("#deriv_func_sat")
+          .select("tspan")
+          .select("tspan")
+          .style(
+            "fill",
+            deriv_func_tags[0].deriv_func_sat.indexOf("是") > -1
+              ? "red"
+              : "#00e600"
+          )
+          .text(deriv_func_tags[0].deriv_func_sat);
+
+        vis
+          .select("#deriv_func_dead")
+          .select("tspan")
+          .select("tspan")
+          .style(
+            "fill",
+            deriv_func_tags[0].deriv_func_dead.indexOf("是") > -1
+              ? "red"
+              : "#00e600"
+          )
+          .text(deriv_func_tags[0].deriv_func_dead);
+      }</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body></html><p></p><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(i){return-1<GUEST.indexOf(i)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"67L1xyhi6cm08nNKSvpPiY39-gzGzoHsz",appKey:"0sMAWyLLKKiCBOLxvQmn0jKn",placeholder:"Just go go",avatar:"mm",meta:guest,pageSize:"10",visitor:!0,lang:"zh-cn"})</script><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.min.css"><script src="//cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });</script>
+
+
+  
+      
+    </div>
+
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>🐶 如果对您有帮助的话，赏个咖啡呗 🐶</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/upload/image/weixinzhifu.jpeg" alt="duobaan_shouti 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/upload/image/zhifubaozhifu.jpeg" alt="duobaan_shouti 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>duobaan_shouti</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://agentai.github.io/2019/07/09/activation_functions/" title="激活函数图形">https://agentai.github.io/2019/07/09/activation_functions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/激活函数/" rel="tag"><i class="fa fa-tag"></i> 激活函数</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/08/problems-during-create-blog/" rel="next" title="搭建blog时遇到的一些问题记录">
+                <i class="fa fa-chevron-left"></i> 搭建blog时遇到的一些问题记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/09/activation_functions_in_deeplearning/" rel="prev" title="深度学习的激活函数">
+                深度学习的激活函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/upload/image/webwxgeticon.jpeg"
+                alt="duobaan_shouti"/>
+            
+              <p class="site-author-name" itemprop="name">duobaan_shouti</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/agentai" title="GitHub &rarr; https://github.com/agentai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"/></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">duobaan_shouti</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">20k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">36 分钟</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css"/>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'bb9d9950d51d1cb77271',
+    clientSecret: 'e0146ed888ae97d4ad2c9efa30a53cd17fab8cc1',
+    repo: 'agentai.github.io',
+    owner: 'agentai',
+    admin: ['agentai'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+        extensions: ['[mhchem]/mhchem.js'],
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src=""></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+	
+	<script>
+		(function(d, w, c) {
+			w.ChatraID = 'c7SEMuADFZghJGvQt';
+			var s = d.createElement('script');
+			w[c] = w[c] || function() {
+				(w[c].q = w[c].q || []).push(arguments);
+			};
+			s.async = true;
+			s.src = 'https://call.chatra.io/chatra.js';
+			if (d.head) d.head.appendChild(s);
+		})(document, window, 'Chatra');
+	</script>
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
