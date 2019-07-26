@@ -93,13 +93,13 @@
 
 
 
-  <meta name="description" content="说明 本文对深度学习中的重要组件——激活函数做系统性汇总。 了解激活函数 什么是激活函数 在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有">
+  <meta name="description" content="说明本文对深度学习中的重要组件——激活函数做系统性汇总。 了解激活函数什么是激活函数在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有优缺点">
 <meta name="keywords" content="深度学习,激活函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度学习的激活函数">
 <meta property="og:url" content="https://agentai.github.io/2019/07/09/activation_functions_in_deeplearning/index.html">
 <meta property="og:site_name" content="多巴胺授体">
-<meta property="og:description" content="说明 本文对深度学习中的重要组件——激活函数做系统性汇总。 了解激活函数 什么是激活函数 在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有">
+<meta property="og:description" content="说明本文对深度学习中的重要组件——激活函数做系统性汇总。 了解激活函数什么是激活函数在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有优缺点">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/18600497-ebc14f6a033ca8a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/18600497-5710b0fd9c5ee858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -165,7 +165,7 @@
 <meta property="og:updated_time" content="2019-07-11T02:35:25.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习的激活函数">
-<meta name="twitter:description" content="说明 本文对深度学习中的重要组件——激活函数做系统性汇总。 了解激活函数 什么是激活函数 在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有">
+<meta name="twitter:description" content="说明本文对深度学习中的重要组件——激活函数做系统性汇总。 了解激活函数什么是激活函数在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有优缺点">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/18600497-ebc14f6a033ca8a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -528,7 +528,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">16k</span>
+              <span title="本文字数">15k</span>
             </span>
           
 
@@ -540,7 +540,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">29 分钟</span>
+              <span title="阅读时长">28 分钟</span>
             </span>
           
 
@@ -559,550 +559,397 @@
       
 
       
-        <h1 id="说明">说明</h1>
-<p>本文对深度学习中的重要组件——激活函数做系统性汇总。</p>
-<h1 id="了解激活函数">了解激活函数</h1>
-<h2 id="什么是激活函数">什么是激活函数</h2>
-<p>在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有优缺点，目前常用的有 ReLU、sigmoid、tanh等。各个激活函数的细节详见下文。</p>
-<h2 id="为什么需要激活函数">为什么需要激活函数</h2>
-<p>当不用激活函数时，神经网络的权重和偏差只会进行<code>线性变换</code>。线性方程很简单，但是解决复杂问题的能力有限。没有激活函数的神经网络实质上就是一个<code>线性回归模型</code>。为了方便理解，以一个简单的例子来说明。考虑如下网络 <img src="https://upload-images.jianshu.io/upload_images/18600497-ebc14f6a033ca8a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一个简单神经网络图"> 在不用激活函数的情况下，该图可用如下公式表示</p>
-<p><span class="math display">\[output = w7(input1*w1 +input2*w2)+w8(input1*w3+input2*w4)+w9(input1*w5+input2*w6)\]</span></p>
-<p>实质是<span class="math inline">\(output=\begin{bmatrix} w1*w7+w3*w8+w5*w9 \\ w2*w7+w4*w8+w6*w9 \end{bmatrix} * \begin{bmatrix}input1 \\ input2 \end{bmatrix} \implies Y=WX\)</span>的线性方程。</p>
-<p>若在隐藏层引入激活函数<span class="math inline">\(h(y)\)</span>，例如令<span class="math inline">\(h(y) = max(y,0)\)</span>，那么原始式子就无法用简单线性方程表示了。</p>
-<p><span class="math display">\[output=w7*max(input1*w1 +input2*w2,0)+w8*max(input1*w3+input2*w4,0)+w9*max(input1*w5+input2*w6,0)\]</span></p>
-<h2 id="激活函数类型">激活函数类型</h2>
-<p>wiki中给出了激活函数的类型，这里略做归纳<br>
-* Identity function (恒等函数)<br>
-* Step function (阶跃函数)<br>
-* Sigmoidal function (S形函数)<br>
-* Ramp function (斜坡函数)</p>
-<p>Binary 和 Bipolar 的区别应该是 Binary（单位）对应值为 0 或 1， Bipolar（两极）对应值为 -1 或 1</p>
-<h2 id="激活函数的一些特性">激活函数的一些特性</h2>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文对深度学习中的重要组件——激活函数做系统性汇总。</p>
+<h1 id="了解激活函数"><a href="#了解激活函数" class="headerlink" title="了解激活函数"></a>了解激活函数</h1><h2 id="什么是激活函数"><a href="#什么是激活函数" class="headerlink" title="什么是激活函数"></a>什么是激活函数</h2><p>在神经网络中，一个节点的激活函数(Activation Function)定义了该节点在给定的输入变量或输入集合下的输出。wiki中以计算机芯片电路为例，标准的计算机芯片电路可以看作是根据输入得到开（1）或关（0）输出的数字电路激活函数。激活函数主要用于提升神经网络解决非线性问题的能力。激活函数各式各样，各有优缺点，目前常用的有 ReLU、sigmoid、tanh等。各个激活函数的细节详见下文。</p>
+<h2 id="为什么需要激活函数"><a href="#为什么需要激活函数" class="headerlink" title="为什么需要激活函数"></a>为什么需要激活函数</h2><p>当不用激活函数时，神经网络的权重和偏差只会进行<code>线性变换</code>。线性方程很简单，但是解决复杂问题的能力有限。没有激活函数的神经网络实质上就是一个<code>线性回归模型</code>。为了方便理解，以一个简单的例子来说明。考虑如下网络<br><img src="https://upload-images.jianshu.io/upload_images/18600497-ebc14f6a033ca8a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一个简单神经网络图"><br>在不用激活函数的情况下，该图可用如下公式表示</p>
+<p>$$output = w7(input1<em>w1 +input2</em>w2)+w8(input1<em>w3+input2</em>w4)+w9(input1<em>w5+input2</em>w6)$$</p>
+<p>实质是$output=\begin{bmatrix} w1<em>w7+w3</em>w8+w5<em>w9 \ w2</em>w7+w4<em>w8+w6</em>w9 \end{bmatrix} * \begin{bmatrix}input1 \ input2 \end{bmatrix} \implies Y=WX$的线性方程。</p>
+<p>若在隐藏层引入激活函数$h(y)$，例如令$h(y) = max(y,0)$，那么原始式子就无法用简单线性方程表示了。</p>
+<p>$$output=w7<em>max(input1</em>w1 +input2<em>w2,0)+w8</em>max(input1<em>w3+input2</em>w4,0)+w9<em>max(input1</em>w5+input2*w6,0)$$</p>
+<h2 id="激活函数类型"><a href="#激活函数类型" class="headerlink" title="激活函数类型"></a>激活函数类型</h2><p>wiki中给出了激活函数的类型，这里略做归纳  </p>
 <ul>
-<li><strong>非线性(Nonlinear)</strong> 当激活函数是非线性的，那么一个两层神经网络也证明是一个通用近似函数<a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem" target="_blank" rel="noopener">通用近似理论</a>。而恒等激活函数则无法满足这一特性，当多层网络的每一层都是恒等激活函数时，该网络实质等同于一个单层网络。<br>
-</li>
-<li><strong>输出值域(Range)</strong> 若激活函数的值域是有限的，因为对权重的更新影响有限，所以基于梯度的训练方法更稳定。若值域是无限的，因为大多数情况下权重更新更明显，所以训练通常更有效，通常需要设定较小的学习率。<br>
-</li>
-<li><strong>连续可微(Continuously differentiable)</strong> 通常情况下，当激活函数连续可微，则可以用基于梯度的优化方法。（也有例外，如ReLU函数虽不是连续可微，使用梯度优化也存在一些问题，如ReLU存在由于梯度过大或学习率过大而导致某个神经元输出小于0，从而使得该神经元输出始终是0，并且无法对与其相连的神经元参数进行更新，相当于该神经元进入了“休眠”状态，参考<a href="https://www.zhihu.com/question/67151971" target="_blank" rel="noopener">深度学习中，使用relu存在梯度过大导致神经元“死亡”，怎么理解？ - 知乎</a>，但ReLU还是可以使用梯度优化的。）二值阶跃函数在0处不可微，并且在其他地方的导数是零，所以梯度优化方法不适用于该激活函数。<br>
-</li>
-<li><strong>单调(Monotonic)</strong> 当激活函数为单调函数时，单层模型的误差曲面一定是凸面。即对应的误差函数是凸函数，求得的最小值一定是全局最小值。<br>
-</li>
-<li><strong>一阶导单调(Smooth functions with a monotonic derivative)</strong> 通常情况下，这些函数表现更好。<br>
-</li>
-<li><strong>原点近似恒等函数(Approximates identity near the origin)</strong> 若激活函数有这一特性，神经网络在随机初始化较小的权重时学习更高效。若激活函数不具备这一特性，初始化权重时必须特别小心。参考<a href="https://stats.stackexchange.com/questions/288722/why-activation-functions-that-approximate-the-identity-near-origin-are-preferabl" target="_blank" rel="noopener">machine learning - Why activation functions that approximate the identity near origin are preferable? - Cross Validated</a></li>
+<li>Identity function (恒等函数)  </li>
+<li>Step function (阶跃函数)  </li>
+<li>Sigmoidal function (S形函数)  </li>
+<li>Ramp function (斜坡函数)  </li>
 </ul>
-<h1 id="激活函数速查表">激活函数速查表</h1>
-<p>以下是输入为一个变量的激活函数列表，主要参考自 <a href="https://en.wikipedia.org/wiki/Activation_function" target="_blank" rel="noopener">wiki</a></p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-</colgroup>
+<p>Binary 和 Bipolar 的区别应该是 Binary（单位）对应值为 0 或 1， Bipolar（两极）对应值为 -1 或 1  </p>
+<h2 id="激活函数的一些特性"><a href="#激活函数的一些特性" class="headerlink" title="激活函数的一些特性"></a>激活函数的一些特性</h2><ul>
+<li><strong>非线性(Nonlinear)</strong> 当激活函数是非线性的，那么一个两层神经网络也证明是一个通用近似函数<a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem" target="_blank" rel="noopener">通用近似理论</a>。而恒等激活函数则无法满足这一特性，当多层网络的每一层都是恒等激活函数时，该网络实质等同于一个单层网络。  </li>
+<li><strong>输出值域(Range)</strong> 若激活函数的值域是有限的，因为对权重的更新影响有限，所以基于梯度的训练方法更稳定。若值域是无限的，因为大多数情况下权重更新更明显，所以训练通常更有效，通常需要设定较小的学习率。  </li>
+<li><strong>连续可微(Continuously differentiable)</strong> 通常情况下，当激活函数连续可微，则可以用基于梯度的优化方法。（也有例外，如ReLU函数虽不是连续可微，使用梯度优化也存在一些问题，如ReLU存在由于梯度过大或学习率过大而导致某个神经元输出小于0，从而使得该神经元输出始终是0，并且无法对与其相连的神经元参数进行更新，相当于该神经元进入了“休眠”状态，参考<a href="https://www.zhihu.com/question/67151971" target="_blank" rel="noopener">深度学习中，使用relu存在梯度过大导致神经元“死亡”，怎么理解？ - 知乎</a>，但ReLU还是可以使用梯度优化的。）二值阶跃函数在0处不可微，并且在其他地方的导数是零，所以梯度优化方法不适用于该激活函数。  </li>
+<li><strong>单调(Monotonic)</strong> 当激活函数为单调函数时，单层模型的误差曲面一定是凸面。即对应的误差函数是凸函数，求得的最小值一定是全局最小值。  </li>
+<li><strong>一阶导单调(Smooth functions with a monotonic derivative)</strong> 通常情况下，这些函数表现更好。  </li>
+<li><strong>原点近似恒等函数(Approximates identity near the origin)</strong> 若激活函数有这一特性，神经网络在随机初始化较小的权重时学习更高效。若激活函数不具备这一特性，初始化权重时必须特别小心。参考<a href="https://stats.stackexchange.com/questions/288722/why-activation-functions-that-approximate-the-identity-near-origin-are-preferabl" target="_blank" rel="noopener">machine learning - Why activation functions that approximate the identity near origin are preferable? - Cross Validated</a>  </li>
+</ul>
+<h1 id="激活函数速查表"><a href="#激活函数速查表" class="headerlink" title="激活函数速查表"></a>激活函数速查表</h1><p>以下是输入为一个变量的激活函数列表，主要参考自 <a href="https://en.wikipedia.org/wiki/Activation_function" target="_blank" rel="noopener">wiki</a>  </p>
+<table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">函数</th>
-<th style="text-align: center;">图形</th>
-<th style="text-align: center;">值域</th>
-<th style="text-align: center;">连续性</th>
-<th style="text-align: center;">单调</th>
-<th style="text-align: center;">一阶导单调</th>
-<th style="text-align: center;">原点近似恒等</th>
+<tr>
+<th align="center">函数</th>
+<th align="center">图形</th>
+<th align="center">值域</th>
+<th align="center">连续性</th>
+<th align="center">单调</th>
+<th align="center">一阶导单调</th>
+<th align="center">原点近似恒等</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Identity(<a href="https://zh.wikipedia.org/wiki/%E6%81%86%E7%AD%89%E5%87%BD%E6%95%B8" title="恒等函数" target="_blank" rel="noopener">恒等函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-5710b0fd9c5ee858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
+<tbody><tr>
+<td align="center">Identity(<a href="https://zh.wikipedia.org/wiki/%E6%81%86%E7%AD%89%E5%87%BD%E6%95%B8" title="恒等函数" target="_blank" rel="noopener">恒等函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-5710b0fd9c5ee858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Binary step(<a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E4%BD%8D%E9%98%B6%E8%B7%83%E5%87%BD%E6%95%B0" title="单位阶跃函数" target="_blank" rel="noopener">单位阶跃函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-b2b444d1e96bf8e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle \{0,1\}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{-1}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Binary step(<a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E4%BD%8D%E9%98%B6%E8%B7%83%E5%87%BD%E6%95%B0" title="单位阶跃函数" target="_blank" rel="noopener">单位阶跃函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-b2b444d1e96bf8e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle {0,1}}$</td>
+<td align="center">${\displaystyle C^{-1}}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Sigmoid(<a href="https://zh.wikipedia.org/wiki/S%E5%87%BD%E6%95%B0" title="S函数" target="_blank" rel="noopener">S函数</a>又称Logistic<a href="https://zh.wikipedia.org/wiki/%E9%82%8F%E8%BC%AF%E5%87%BD%E6%95%B8" title="逻辑函数" target="_blank" rel="noopener">逻辑函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-7ecc2d07df55ae67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (0,1)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Sigmoid(<a href="https://zh.wikipedia.org/wiki/S%E5%87%BD%E6%95%B0" title="S函数" target="_blank" rel="noopener">S函数</a>又称Logistic<a href="https://zh.wikipedia.org/wiki/%E9%82%8F%E8%BC%AF%E5%87%BD%E6%95%B8" title="逻辑函数" target="_blank" rel="noopener">逻辑函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-7ecc2d07df55ae67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (0,1)}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">TanH(<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E6%9B%B2%E6%AD%A3%E5%88%87%E5%87%BD%E6%95%B0" title="双曲正切函数" target="_blank" rel="noopener">双曲正切函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-9210b7ff830fdc94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-1,1)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">TanH(<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E6%9B%B2%E6%AD%A3%E5%88%87%E5%87%BD%E6%95%B0" title="双曲正切函数" target="_blank" rel="noopener">双曲正切函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-9210b7ff830fdc94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-1,1)}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ArcTan(<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E6%AD%A3%E5%88%87" title="反正切" target="_blank" rel="noopener">反正切函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-03c83295f756f2e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle \left(-{\frac {\pi }{2}},{\frac {\pi }{2}}\right)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">ArcTan(<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E6%AD%A3%E5%88%87" title="反正切" target="_blank" rel="noopener">反正切函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-03c83295f756f2e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle \left(-{\frac {\pi }{2}},{\frac {\pi }{2}}\right)}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Softsign函数</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-1042e88c2c7c93ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-1,1)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{1}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">Softsign函数</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-1042e88c2c7c93ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-1,1)}$</td>
+<td align="center">${\displaystyle C^{1}}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Inverse square root unit(反平方根函数,<a href="https://arxiv.org/pdf/1710.09967.pdf" target="_blank" rel="noopener">ISRU</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-4bc4074325eb5c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle \left(-{\frac {1}{\sqrt {\alpha }}},{\frac {1}{\sqrt {\alpha }}}\right)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">Inverse square root unit(反平方根函数,<a href="https://arxiv.org/pdf/1710.09967.pdf" target="_blank" rel="noopener">ISRU</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-4bc4074325eb5c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle \left(-{\frac {1}{\sqrt {\alpha }}},{\frac {1}{\sqrt {\alpha }}}\right)}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Inverse square root linear unit(反平方根线性函数,ISRLU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-0e78f5b1f5f92c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle \left(-{\frac {1}{\sqrt {\alpha }}},\infty \right)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{2}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">Inverse square root linear unit(反平方根线性函数,ISRLU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-0e78f5b1f5f92c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle \left(-{\frac {1}{\sqrt {\alpha }}},\infty \right)}$</td>
+<td align="center">${\displaystyle C^{2}}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Square Nonlinearity(平方非线性函数,SQNL)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-245230edcd3a4a9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-1,1)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{2}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">Square Nonlinearity(平方非线性函数,SQNL)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-245230edcd3a4a9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-1,1)}$</td>
+<td align="center">${\displaystyle C^{2}}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0" title="线性整流函数" target="_blank" rel="noopener">线性整流函数</a>,ReLU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-aaaa71e376ca3391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle [0,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0" title="线性整流函数" target="_blank" rel="noopener">线性整流函数</a>,ReLU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-aaaa71e376ca3391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle [0,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Bipolar rectified linear unit(二级线性整流函数,<a href="https://arxiv.org/pdf/1709.04054.pdf" target="_blank" rel="noopener">BReLU</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-c08bbbca6e05005b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Bipolar rectified linear unit(二级线性整流函数,<a href="https://arxiv.org/pdf/1709.04054.pdf" target="_blank" rel="noopener">BReLU</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-c08bbbca6e05005b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,Leaky ReLU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-de814e275edfd1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,Leaky ReLU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-de814e275edfd1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Parameteric rectified linear unit(参数化线性整流函数,PReLU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-193a91a0a6deee5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> <span class="math inline">\({\displaystyle \alpha \geq 0}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> <span class="math inline">\({\displaystyle \alpha = 1}\)</span></td>
+<tr>
+<td align="center">Parameteric rectified linear unit(参数化线性整流函数,PReLU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-193a91a0a6deee5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> ${\displaystyle \alpha \geq 0}$</td>
+<td align="center">是</td>
+<td align="center">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> ${\displaystyle \alpha = 1}$</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Randomized leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,RReLU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-7c8d441bd88e7593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Randomized leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,RReLU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-7c8d441bd88e7593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Exponential linear unit(指数线性函数,ELU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-20873dee2d68795d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\alpha ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle {\begin{cases}C_{1}&amp;{\text{when }}\alpha =1\\C_{0}&amp;{\text{otherwise }}\end{cases}}}\)</span></td>
-<td style="text-align: center;">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> <span class="math inline">\({\displaystyle \alpha \geq 0}\)</span></td>
-<td style="text-align: center;">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> <span class="math inline">\({\displaystyle 0\leq \alpha \leq 1}\)</span></td>
-<td style="text-align: center;">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> <span class="math inline">\({\displaystyle \alpha = 1}\)</span></td>
+<tr>
+<td align="center">Exponential linear unit(指数线性函数,ELU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-20873dee2d68795d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\alpha ,\infty )}$</td>
+<td align="center">${\displaystyle {\begin{cases}C_{1}&amp;{\text{when }}\alpha =1\C_{0}&amp;{\text{otherwise }}\end{cases}}}$</td>
+<td align="center">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> ${\displaystyle \alpha \geq 0}$</td>
+<td align="center">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> ${\displaystyle 0\leq \alpha \leq 1}$</td>
+<td align="center">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> ${\displaystyle \alpha = 1}$</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Scaled exponential linear unit(扩展指数线性函数,SELU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-813a02444c461bf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\lambda \alpha ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Scaled exponential linear unit(扩展指数线性函数,SELU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-813a02444c461bf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\lambda \alpha ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-6b723b46e8e6d58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-6b723b46e8e6d58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Adaptive piecewise linear(自适应分段线性函数,APL)</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{0}}\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Adaptive piecewise linear(自适应分段线性函数,APL)</td>
+<td align="center"></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{0}}$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">SoftPlus函数</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-e78b931a88ee79c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (0,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">SoftPlus函数</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-e78b931a88ee79c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (0,\infty )}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Bent identity(弯曲恒等函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-d48fb0c9bcd7aeb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">Bent identity(弯曲恒等函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-d48fb0c9bcd7aeb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Sigmoid-weighted linear unit (SiLU)<sup><a href="https://zh.wikipedia.org/wiki/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0#cite_note-11" target="_blank" rel="noopener">[11]</a></sup> (也被称为Swish<sup><a href="https://zh.wikipedia.org/wiki/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0#cite_note-12" target="_blank" rel="noopener">[12]</a></sup>)</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle [\approx -0.28,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Sigmoid-weighted linear unit (SiLU)<sup><a href="https://zh.wikipedia.org/wiki/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0#cite_note-11" target="_blank" rel="noopener">[11]</a></sup> (也被称为Swish<sup><a href="https://zh.wikipedia.org/wiki/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0#cite_note-12" target="_blank" rel="noopener">[12]</a></sup>)</td>
+<td align="center"></td>
+<td align="center">${\displaystyle [\approx -0.28,\infty )}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">SoftExponential函数</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-1d977dd9ebda9431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (-\infty ,\infty )}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> <span class="math inline">\({\displaystyle \alpha = 0}\)</span></td>
+<tr>
+<td align="center">SoftExponential函数</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-1d977dd9ebda9431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (-\infty ,\infty )}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是 <a href="https://en.wikipedia.org/wiki/If_and_only_if" title="If and only if" target="_blank" rel="noopener">iff</a> ${\displaystyle \alpha = 0}$</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Soft Clipping(柔性剪峰函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-a090a7783d0d8779.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (0,1)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Soft Clipping(柔性剪峰函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-a090a7783d0d8779.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (0,1)}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Sine_wave" target="_blank" rel="noopener">Sinusoid</a>(<a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%BC%A6%E5%87%BD%E6%95%B0" title="正弦函数" target="_blank" rel="noopener">正弦函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-d3e3e1eb128a9880.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle [-1,1]}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Sine_wave" target="_blank" rel="noopener">Sinusoid</a><a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%BC%A6%E5%87%BD%E6%95%B0" title="正弦函数" target="_blank" rel="noopener">正弦函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-d3e3e1eb128a9880.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle [-1,1]}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="https://zh.wikipedia.org/wiki/Sinc%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">Sinc函数</a></td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-dd49869c7fea9686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle [\approx -.217234,1]}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center"><a href="https://zh.wikipedia.org/wiki/Sinc%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">Sinc函数</a></td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-dd49869c7fea9686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle [\approx -.217234,1]}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Gaussian_function" title="Gaussian function" target="_blank" rel="noopener">Gaussian</a>(<a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E6%96%AF%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">高斯函数</a>)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-b9849f4e71ae2f9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle (0,1]}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\({\displaystyle C^{\infty }}\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Gaussian_function" title="Gaussian function" target="_blank" rel="noopener">Gaussian</a>(<a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E6%96%AF%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">高斯函数</a>)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-b9849f4e71ae2f9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">${\displaystyle (0,1]}$</td>
+<td align="center">${\displaystyle C^{\infty }}$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Hard Sigmoid(分段近似Sigmoid函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-2c3e53ea13dc080e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\([0,1]\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(C^{0}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Hard Sigmoid(分段近似Sigmoid函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-2c3e53ea13dc080e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">$[0,1]$</td>
+<td align="center">$C^{0}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Hard Tanh(分段近似Tanh函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-b5d4e0248cb1acfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\([-1,1]\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(C^{0}\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
+<tr>
+<td align="center">Hard Tanh(分段近似Tanh函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-b5d4e0248cb1acfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">$[-1,1]$</td>
+<td align="center">$C^{0}$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-1bb660c33c3059d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\((-1.7519 , 1.7519)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(C^{\infty }\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-1bb660c33c3059d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">$(-1.7519 , 1.7519)$</td>
+<td align="center">$C^{\infty }$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Symmetrical Sigmoid(对称Sigmoid函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-5aaa82d797f96fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\((-1, -1)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(C^{\infty }\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Symmetrical Sigmoid(对称Sigmoid函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-5aaa82d797f96fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">$(-1, -1)$</td>
+<td align="center">$C^{\infty }$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Complementary Log Log函数</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-08cdebbecc3d058b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\((0, 1)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(C^{\infty }\)</span></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Complementary Log Log函数</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-08cdebbecc3d058b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">$(0, 1)$</td>
+<td align="center">$C^{\infty }$</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">Absolute(绝对值函数)</td>
-<td style="text-align: center;"><img src="https://upload-images.jianshu.io/upload_images/18600497-7d837d66e7bac174.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></td>
-<td style="text-align: center;"><span class="math inline">\([0, \infty)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(C^{0 }\)</span></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
+<tr>
+<td align="center">Absolute(绝对值函数)</td>
+<td align="center"><img src="https://upload-images.jianshu.io/upload_images/18600497-7d837d66e7bac174.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></td>
+<td align="center">$[0, \infty)$</td>
+<td align="center">$C^{0 }$</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">否</td>
 </tr>
-</tbody>
-</table>
-<h1 id="激活函数详细描述">激活函数详细描述</h1>
-<p><strong>函数图形说明</strong><br>
-函数图形主要取自<a href="%5Bhttps://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/%5D(https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/)">Visualising Activation Functions in Neural Networks</a>。<br>
-翻译版本访问<a href="/2019/07/09/activation_functions/" title="这里">这里</a> 左侧蓝线是激活函数方程式图形，黄色是激活函数一阶导图形。<br>
-右侧篮框是对激活函数方程式的各项特性描述，包括：<br>
-- Range(激活函数输出值域)<br>
-- Monotonic(激活函数是否单调)<br>
-- Continuity(激活函数连续性类型)<br>
-- Identity at Origin(激活函数在原点处是否近似恒等)<br>
-- Symmetry(激活函数是否对称)</p>
-<p>右侧黄框是对激活函数一阶导的各项特性描述，包括：<br>
-- Range(一阶导输出值域)<br>
-- Monotonic(一阶导是否单调)<br>
-- Continuous(一阶导是否连续)<br>
-- Vanishing Gradient(是否梯度消失:<em>指随着网络向后传递，是否存在当梯度值过小时，梯度变化以指数形式衰减，直至消失，导致后面的网络节点几乎无法更新参数</em>)<br>
-- Exploding Gradient(是否梯度爆炸:<em>指是否存在当梯度值过大，梯度变化以指数形式增加，直至爆炸</em>)<br>
-- Saturation(饱和:<em>指激活函数值接近其边界时，如sigmoid函数值接近0或1时，函数曲线是否平缓，过于平缓可能会导致在向后传播时梯度消失</em>)<br>
-- Dead Neurons(神经元死亡:<em>指在网络传播时，是否会出现某个神经元永远不会再更新的情况</em>)</p>
-<h2 id="identity恒等函数">Identity(恒等函数)</h2>
-<p><strong>描述</strong>： 一种输入和输出相等的激活函数，比较适合线性问题，如线性回归问题。但不适用于解决非线性问题。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=x}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=1}\)</span><br>
-<strong>图形</strong>：<br>
-<img src="https://upload-images.jianshu.io/upload_images/18600497-5710b0fd9c5ee858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="binary-step单位阶跃函数">Binary step(单位阶跃函数)</h2>
-<p><strong>描述</strong>： step与神经元激活的含义最贴近，指当刺激超过阈值时才会激发。但是由于该函数的梯度始终为0，不能作为深度网络的激活函数<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\begin{cases}0&amp;{\text{for }}x&lt;0\\1&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f^{\prime}(x)={\begin{cases}0&amp;{\text{for }}x\neq 0\\?&amp;{\text{for }}x=0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<br>
-<img src="https://upload-images.jianshu.io/upload_images/18600497-b2b444d1e96bf8e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="sigmoids函数又称logistic逻辑函数">Sigmoid(S函数又称Logistic逻辑函数)</h2>
-<p><strong>描述</strong>： 使用很广的一类激活函数，具有指数函数形状，在物理意义上最接近生物神经元。并且值域在(0,1)之间，可以作为概率表示。该函数也通常用于对输入的归一化，如Sigmoid交叉熵损失函数。Sigmoid激活函数具有梯度消失和饱和的问题，一般来说，sigmoid网络在5层之内就会产生梯度消失现象。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=\sigma (x)={\frac {1}{1+e^{-x}}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=f(x)(1-f(x))}\)</span><br>
-<strong>图形</strong>：<br>
-<img src="https://upload-images.jianshu.io/upload_images/18600497-7ecc2d07df55ae67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="tanh双曲正切函数">TanH(双曲正切函数)</h2>
-<p><strong>描述</strong>： TanH与Sigmoid函数类似，在输入很大或很小时，输出几乎平滑，梯度很小，不利于权重更新，容易出现梯度消失和饱和的问题。不过TanH函数值域在(-1,1)之间，以0为中心反对称，且原点近似恒等，这些点是加分项。一般二分类问题中，隐藏层用tanh函数，输出层用sigmod函数。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=\tanh(x)={\frac {(e^{x}-e^{-x})}{(e^{x}+e^{-x})}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=1-f(x)^{2}}\)</span><br>
-<strong>图形</strong>：<br>
-<img src="https://upload-images.jianshu.io/upload_images/18600497-9210b7ff830fdc94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="arctan反正切函数">ArcTan(反正切函数)</h2>
-<p><strong>描述</strong>： ArcTen从图形上看类似TanH函数，只是比TanH平缓，值域更大。从一阶导看出导数趋于零的速度比较慢，因此训练比较快。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=\tan ^{-1}(x)}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\frac {1}{x^{2}+1}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-03c83295f756f2e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="softsign函数">Softsign函数</h2>
-<p><strong>描述</strong>： Softsign从图形上看也类似TanH函数，以0为中心反对称，训练比较快。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\frac {x}{1+\|x\|}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\frac {1}{(1+\|x\|)^{2}}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-1042e88c2c7c93ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="inverse-square-root-unit反平方根函数isru">Inverse square root unit(反平方根函数,<a href="https://arxiv.org/pdf/1710.09967.pdf" target="_blank" rel="noopener">ISRU</a>)</h2>
-<p><strong>描述</strong>： 图形类似于tanH和Sigmoid函数，论文说可作为RNN层的激活函数，号称在RNN层中达到与tanh和sigmoid一样效果的情况下，计算复杂度更低。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\frac {x}{\sqrt {1+\alpha x^{2}}}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=\left({\frac {1}{\sqrt {1+\alpha x^{2}}}}\right)^{3}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-4bc4074325eb5c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="inverse-square-root-linear-unit反平方根线性函数isrlu">Inverse square root linear unit(反平方根线性函数,ISRLU)</h2>
-<p><strong>描述</strong>： 一个分段函数，小于0部分是ISRU，大于等于0部分是恒等函数，论文里说这函数在CNN层上相较于ReLU学习更快，更一般化。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\begin{cases}{\frac {x}{\sqrt {1+\alpha x^{2}}}}&amp;{\text{for }}x&lt;0\\x&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\begin{cases}\left({\frac {1}{\sqrt {1+\alpha x^{2}}}}\right)^{3}&amp;{\text{for }}x&lt;0\\1&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-0e78f5b1f5f92c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="square-nonlinearity平方非线性函数sqnl">Square Nonlinearity(平方非线性函数,SQNL)</h2>
-<p><strong>描述</strong>： 类似Softsign的函数，<a href="https://ieeexplore.ieee.org/document/8489043" target="_blank" rel="noopener">论文摘要</a>中将这个与Softsign对比，说该函数在收敛速度上更快。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\begin{cases}1&amp;:x&gt;2.0\\x-{\frac {x^{2}}{4}}&amp;:0\leq x\leq 2.0\\x+{\frac {x^{2}}{4}}&amp;:-2.0\leq x&lt;0\\-1&amp;:x&lt;-2.0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=1\mp {\frac {x}{2}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-245230edcd3a4a9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="rectified-linear-unit线性整流函数relu">Rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0" title="线性整流函数" target="_blank" rel="noopener">线性整流函数</a>,ReLU)</h2>
-<p><strong>描述</strong>： 比较流行的激活函数，该函数保留了类似step那样的生物学神经元机制，即高于0才激活，不过因在0以下的导数都是0，可能会引起学习缓慢甚至神经元死亡的情况。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\begin{cases}0&amp;{\text{for }}x\leq 0\\x&amp;{\text{for }}x&gt;0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\begin{cases}0&amp;{\text{for }}x\leq 0\\1&amp;{\text{for }}x&gt;0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-aaaa71e376ca3391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="bipolar-rectified-linear-unit二级线性整流函数brelu">Bipolar rectified linear unit(二级线性整流函数,<a href="https://arxiv.org/pdf/1709.04054.pdf" target="_blank" rel="noopener">BReLU</a>)</h2>
-<p><strong>描述</strong>： relu系列的一种激活函数，形式很奇怪，采用mod 2作为条件分段，论文说在个别场景上能取得更好的效果。<br>
-<strong>方程式</strong>： <span class="math inline">\(f(x_{i})={\begin{cases}ReLU(x_{i})&amp;{\text{if }}i{\bmod {2}}=0\\-ReLU(-x_{i})&amp;{\text{if }}i{\bmod {2}}\neq 0\end{cases}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x_{i})={\begin{cases}ReLU&#39;(x_{i})&amp;{\text{if }}i{\bmod {2}}=0\\-ReLU&#39;(-x_{i})&amp;{\text{if }}i{\bmod {2}}\neq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-c08bbbca6e05005b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="leaky-rectified-linear-unit带泄露随机线性整流函数leaky-relu">Leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,Leaky ReLU)</h2>
-<p><strong>描述</strong>： relu的一个变化，即在小于0部分不等于0，而是加一个很小的不为零的斜率，减少神经元死亡带来的影响。<br>
-<strong>方程式</strong>： <span class="math inline">\({ f(x)={\begin{cases}0.01x&amp;{\text{for }}x&lt;0\\x&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\begin{cases}0.01&amp;{\text{for }}x&lt;0\\1&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-de814e275edfd1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="parameteric-rectified-linear-unit参数化线性整流函数prelu">Parameteric rectified linear unit(参数化线性整流函数,PReLU)</h2>
-<p><strong>描述</strong>： 也是ReLU的一个变化，与Leaky ReLU类似，只不过PReLU将小于零部分的斜率换成了可变参数α。这种变化使值域会依据α不同而不同。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(\alpha ,x)={\begin{cases}\alpha x&amp;{\text{for }}x&lt;0\\x&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({ f&#39;(\alpha ,x)={\begin{cases}\alpha &amp;{\text{for }}x&lt;0\\1&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-193a91a0a6deee5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="randomized-leaky-rectified-linear-unit带泄露随机线性整流函数rrelu">Randomized leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,RReLU)</h2>
-<p><strong>描述</strong>： 在PReLU基础上将α变成了随机数。参考<a href="https://arxiv.org/abs/1505.00853" target="_blank" rel="noopener">论文</a><br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(\alpha ,x)={\begin{cases}\alpha x&amp;{\text{for }}x&lt;0\\x&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({ f&#39;(\alpha ,x)={\begin{cases}\alpha &amp;{\text{for }}x&lt;0\\1&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-7c8d441bd88e7593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="exponential-linear-unit指数线性函数elu">Exponential linear unit(指数线性函数,ELU)</h2>
-<p><strong>描述</strong>： ELU小于零的部分采用了负指数形式，相较于ReLU权重可以有负值，并且在输入取较小值时具有软饱和的特性，提升了对噪声的鲁棒性。参考<a href="https://blog.csdn.net/mao_xiao_feng/article/details/53242235?locationNum=9&amp;fps=1" target="_blank" rel="noopener">ELU激活函数的提出</a><br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(\alpha ,x)={\begin{cases}\alpha (e^{x}-1)&amp;{\text{for }}x\leq 0\\x&amp;{\text{for }}x&gt;0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({ f&#39;(\alpha ,x)={\begin{cases}f(\alpha ,x)+\alpha &amp;{\text{for }}x\leq 0\\1&amp;{\text{for }}x&gt;0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-20873dee2d68795d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="scaled-exponential-linear-unit扩展指数线性函数selu">Scaled exponential linear unit(扩展指数线性函数,SELU)</h2>
-<p><strong>描述</strong>： ELU的一种变化，引入超参λ和α，并给出了相应取值，这些取值在原论文中（<a href="https://arxiv.org/abs/1706.02515" target="_blank" rel="noopener">Self-Normalizing Neural Networks</a>）详细推导过程<br>
-<strong>方程式</strong>： ${ f(,x)=} $<br>
-<span class="math inline">\(with \quad{\displaystyle \lambda =1.0507} \quad and \quad {\displaystyle \alpha =1.67326}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(\alpha ,x)=\lambda {\begin{cases}\alpha (e^{x})&amp;{\text{for }}x&lt;0\\1&amp;{\text{for }}x\geq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-813a02444c461bf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="s-shaped-rectified-linear-activation-units型线性整流激活函数srelu">S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)</h2>
-<p><strong>描述</strong>： 也是ReLU的一种变化，不同的是该函数有三个分段，四个超参数，这种设置使函数图形看起来像S型，具体参考<a href="https://arxiv.org/abs/1512.07030" target="_blank" rel="noopener">论文</a>。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f_{t_{l},a_{l},t_{r},a_{r}}(x)={\begin{cases}t_{l}+a_{l}(x-t_{l})&amp;{\text{for }}x\leq t_{l}\\x&amp;{\text{for }}t_{l}&lt;x&lt;t_{r}\\t_{r}+a_{r}(x-t_{r})&amp;{\text{for }}x\geq t_{r}\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;_{t_{l},a_{l},t_{r},a_{r}}(x)={\begin{cases}a_{l}&amp;{\text{for }}x\leq t_{l}\\1&amp;{\text{for }}t_{l}&lt;x&lt;t_{r}\\a_{r}&amp;{\text{for }}x\geq t_{r}\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-6b723b46e8e6d58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="adaptive-piecewise-linear自适应分段线性函数apl">Adaptive piecewise linear(自适应分段线性函数,APL)</h2>
-<p><strong>描述</strong>： 原<a href="https://arxiv.org/abs/1412.6830" target="_blank" rel="noopener">论文</a>表示通过分段为神经元学习加入自适应激活功能，比ReLU在cifar-10、cifar-100上有更好的性能。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=\max(0,x)+\sum _{s=1}^{S}a_{i}^{s}\max(0,-x+b_{i}^{s})}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=H(x)-\sum _{s=1}^{S}a_{i}^{s}H(-x+b_{i}^{s})}\)</span><br>
-<strong>图形</strong>：</p>
-<h2 id="softplus函数">SoftPlus函数</h2>
-<p><strong>描述</strong>： 是ReLU的平滑替代，函数在任何地方连续且值域非零，避免了死神经元。不过因不对称且不以零为中心，可以影响网络学习。由于导数必然小于1，所以也存在梯度消失问题。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=\ln(1+e^{x})}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\frac {1}{1+e^{-x}}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-e78b931a88ee79c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="bent-identity弯曲恒等函数">Bent identity(弯曲恒等函数)</h2>
-<p><strong>描述</strong>： 可以理解为identity和ReLU之间的一种折中，不会出现死神经元的问题，不过存在梯度消失和梯度爆炸风险。<br>
-<strong>方程式</strong>： <span class="math inline">\(\begin{align*}f(x)=\frac{\sqrt{x^2 + 1} - 1}{2} + x \end{align*}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\frac {x}{2{\sqrt {x^{2}+1}}}}+1}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-d48fb0c9bcd7aeb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="sigmoid-weighted-linear-unit-silu">Sigmoid-weighted linear unit (SiLU)</h2>
-<p><strong>描述</strong>： 具体参考<a href="https://arxiv.org/abs/1702.03118" target="_blank" rel="noopener">论文</a><br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=x\cdot \sigma (x)}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=f(x)+\sigma (x)(1-f(x))}\)</span><br>
-<strong>图形</strong>：</p>
-<h2 id="softexponential函数">SoftExponential函数</h2>
-<p><strong>描述</strong>： 参考<a href="https://arxiv.org/abs/1602.01321" target="_blank" rel="noopener">论文</a><br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(\alpha ,x)={\begin{cases}-{\frac {\ln(1-\alpha (x+\alpha ))}{\alpha }}&amp;{\text{for }}\alpha &lt;0\\x&amp;{\text{for }}\alpha =0\\{\frac {e^{\alpha x}-1}{\alpha }}+\alpha &amp;{\text{for }}\alpha &gt;0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(\alpha ,x)={\begin{cases}{\frac {1}{1-\alpha (\alpha +x)}}&amp;{\text{for }}\alpha &lt;0\\e^{\alpha x}&amp;{\text{for }}\alpha \geq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-1d977dd9ebda9431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="soft-clipping柔性剪峰函数">Soft Clipping(柔性剪峰函数)</h2>
-<p><strong>描述</strong>： 参考<a href="https://arxiv.org/abs/1810.11509" target="_blank" rel="noopener">论文</a><br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(\alpha ,x)={\frac {1}{\alpha }}\log {\frac {1+e^{\alpha x}}{1+e^{\alpha (x-1)}}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(\alpha ,x)={\frac {1}{2}}\sinh \left({\frac {p}{2}}\right){\text{sech}}\left({\frac {px}{2}}\right){\text{sech}}\left({\frac {p}{2}}(1-x)\right)}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-a090a7783d0d8779.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="sinusoid正弦函数"><a href="https://en.wikipedia.org/wiki/Sine_wave" target="_blank" rel="noopener">Sinusoid</a>(<a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%BC%A6%E5%87%BD%E6%95%B0" title="正弦函数" target="_blank" rel="noopener">正弦函数</a>)</h2>
-<p><strong>描述</strong>： Sinusoid作为激活函数，为神经网络引入了周期性，且该函数处处联系，以零点对称。参考<a href="https://arxiv.org/abs/1405.2262" target="_blank" rel="noopener">论文</a><br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=\sin(x)}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=\cos(x)}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-d3e3e1eb128a9880.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="sinc函数"><a href="https://zh.wikipedia.org/wiki/Sinc%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">Sinc函数</a></h2>
-<p><strong>描述</strong>： Sinc函数在信号处理中尤为重要，因为它表征了矩形函数的傅立叶变换。作为激活函数，它的优势在于处处可微和对称的特性，不过容易产生梯度消失的问题。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)={\begin{cases}1&amp;{\text{for }}x=0\\{\frac {\sin(x)}{x}}&amp;{\text{for }}x\neq 0\end{cases}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)={\begin{cases}0&amp;{\text{for }}x=0\\{\frac {\cos(x)}{x}}-{\frac {\sin(x)}{x^{2}}}&amp;{\text{for }}x\neq 0\end{cases}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-dd49869c7fea9686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="gaussian高斯函数"><a href="https://en.wikipedia.org/wiki/Gaussian_function" title="Gaussian function" target="_blank" rel="noopener">Gaussian</a>(<a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E6%96%AF%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">高斯函数</a>)</h2>
-<p><strong>描述</strong>： 高斯激活函数不常用。<br>
-<strong>方程式</strong>： <span class="math inline">\({\displaystyle f(x)=e^{-x^{2}}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\({\displaystyle f&#39;(x)=-2xe^{-x^{2}}}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-b9849f4e71ae2f9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="hard-sigmoid分段近似sigmoid函数">Hard Sigmoid(分段近似Sigmoid函数)</h2>
-<p><strong>描述</strong>： 是Sigmoid函数的分段线性近似，更容易计算，不过存在梯度消失和神经元死亡的问题<br>
-<strong>方程式</strong>： <span class="math inline">\(f(x) =\begin{cases}0 &amp; \text{for } x&lt;-2.5\\0.2x + 0.5 &amp; \text{for } -2.5\geq x\leq 2.5 \\1 &amp; \text{for } x&gt;2.5\end{cases}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\(f&#39;(x) =\begin{cases}0 &amp; \text{for } x&lt;-2.5\\0.2 &amp; \text{for } -2.5\geq x\leq 2.5 \\0 &amp; \text{for } x&gt;2.5\end{cases}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-2c3e53ea13dc080e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="hard-tanh分段近似tanh函数">Hard Tanh(分段近似Tanh函数)</h2>
-<p><strong>描述</strong>： Tanh激活函数的分段线性近似。<br>
-<strong>方程式</strong>： <span class="math inline">\(f(x) =\begin{cases}-1 &amp; \text{for } x&lt;-1\\x &amp; \text{for } -1\geq x\leq 1 \\1 &amp; \text{for } x&gt;1 \end{cases}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\(f&#39;(x) =\begin{cases}0 &amp; \text{for } x&lt;-1\\1 &amp; \text{for } -1\geq x\leq 1 \\0 &amp; \text{for } x&gt;1\end{cases}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-b5d4e0248cb1acfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="lecun-tanh也称scaled-tanh按比例缩放的tanh函数">LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)</h2>
-<p><strong>描述</strong>： Tanh的缩放版本，参考<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf" target="_blank" rel="noopener">论文</a><br>
-<strong>方程式</strong>： <span class="math inline">\(\begin{align*}f(x)&amp;=1.7519\tanh(\frac{2}{3}x)\end{align*}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\(\begin{align*}f&#39;(x)&amp;=1.7519*\frac{2}{3}(1-\tanh^2(\frac{2}{3}x))\\&amp;=1.7519*\frac{2}{3}-\frac{2}{3*1.7519}f(x)^2\end{align*}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-1bb660c33c3059d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="symmetrical-sigmoid对称sigmoid函数">Symmetrical Sigmoid(对称Sigmoid函数)</h2>
-<p><strong>描述</strong>： 是Tanh的一种替代方法，比Tanh形状更扁平，导数更小，下降更缓慢。<br>
-<strong>方程式</strong>： <span class="math inline">\(\begin{align*}f(x)&amp;=\tanh(x/2)\\&amp;=\frac{1-e^{-x}}{1+e^{-x}}\end{align*}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\(\begin{align*}f&#39;(x)&amp;=0.5(1-\tanh^2(x/2))\\&amp;=0.5(1-f(x)^2)\end{align*}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-5aaa82d797f96fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="complementary-log-log函数">Complementary Log Log函数</h2>
-<p><strong>描述</strong>： 是Sigmoid的一种替代，相较于Sigmoid更饱和。<br>
-<strong>方程式</strong>： <span class="math inline">\(f(x)=1-e^{-e^{x}}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\(\begin{align*}f&#39;(x)=e^{x}(e^{-e^{x}}) = e^{x-e^{x}}\end{align*}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-08cdebbecc3d058b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="absolute绝对值函数">Absolute(绝对值函数)</h2>
-<p><strong>描述</strong>： 导数只有两个值。<br>
-<strong>方程式</strong>： <span class="math inline">\(\begin{align*}f(x)=|x|\end{align*}\)</span><br>
-<strong>一阶导</strong>： <span class="math inline">\(f&#39;(x) =\begin{cases}-1 &amp; \text{for } x&lt;0\\1 &amp; \text{for } x&gt;0\\? &amp; \text{for } x=0\end{cases}\)</span><br>
-<strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-7d837d66e7bac174.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h1 id="附录">附录</h1>
-<h2 id="order-of-continuity函数连续性">Order of continuity(函数连续性)</h2>
-<p>函数参数连续性是个人的意译，大概意思应该是激活函数曲线的连续性类型。wiki中有对各个值的说明，可参考<a href="https://en.wikipedia.org/wiki/Smoothness#Order_of_continuity" target="_blank" rel="noopener">Order_of_continuity</a>和<a href="https://blog.csdn.net/weixin_42513339/article/details/83474118" target="_blank" rel="noopener">描述光滑度中对于曲线、曲面的C0、C1、C2和G0、G1、G2定义和区别 - chenchen_fcj程序猿的博客 - CSDN博客</a>，简单说明如下</p>
+</tbody></table>
+<h1 id="激活函数详细描述"><a href="#激活函数详细描述" class="headerlink" title="激活函数详细描述"></a>激活函数详细描述</h1><p><strong>函数图形说明</strong><br>函数图形主要取自<a href="[https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/](https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/)">Visualising Activation Functions in Neural Networks</a>。<br>翻译版本访问<a href="/2019/07/09/activation_functions/" title="这里">这里</a><br>左侧蓝线是激活函数方程式图形，黄色是激活函数一阶导图形。<br>右侧篮框是对激活函数方程式的各项特性描述，包括：  </p>
 <ul>
-<li><p><span class="math inline">\(C^{-1}\)</span>: 曲线不连续</p></li>
-<li><p><span class="math inline">\(C^{0}\)</span>: 曲线本身是连续的，但不可导</p></li>
-<li><p><span class="math inline">\(C^{1}\)</span>:  曲线一阶导是连续的，但无法二阶导</p></li>
-<li><p><span class="math inline">\(C^{2}\)</span>:  曲线一阶导和二阶导是连续的，但无法三阶导</p></li>
-<li><p><span class="math inline">\(C^{n}\)</span>:  曲线一阶导到n阶导是连续的，但无法进行n+1阶导</p></li>
-<li><p><span class="math inline">\(C^{\infty}\)</span>: 曲线无穷阶可导</p></li>
+<li>Range(激活函数输出值域)  </li>
+<li>Monotonic(激活函数是否单调)  </li>
+<li>Continuity(激活函数连续性类型)  </li>
+<li>Identity at Origin(激活函数在原点处是否近似恒等)  </li>
+<li>Symmetry(激活函数是否对称)  </li>
 </ul>
-<h1 id="参考">参考</h1>
-<p><a href="https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">visualising-activation-functions-in-neural-networks</a><br>
-<a href="https://en.wikipedia.org/wiki/Activation_function" target="_blank" rel="noopener">Activation_function</a><br>
-<a href="https://zhuanlan.zhihu.com/p/32824193" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32824193</a></p>
+<p>右侧黄框是对激活函数一阶导的各项特性描述，包括：  </p>
+<ul>
+<li>Range(一阶导输出值域)  </li>
+<li>Monotonic(一阶导是否单调)  </li>
+<li>Continuous(一阶导是否连续)  </li>
+<li>Vanishing Gradient(是否梯度消失:<em>指随着网络向后传递，是否存在当梯度值过小时，梯度变化以指数形式衰减，直至消失，导致后面的网络节点几乎无法更新参数</em>)  </li>
+<li>Exploding Gradient(是否梯度爆炸:<em>指是否存在当梯度值过大，梯度变化以指数形式增加，直至爆炸</em>)  </li>
+<li>Saturation(饱和:<em>指激活函数值接近其边界时，如sigmoid函数值接近0或1时，函数曲线是否平缓，过于平缓可能会导致在向后传播时梯度消失</em>)  </li>
+<li>Dead Neurons(神经元死亡:<em>指在网络传播时，是否会出现某个神经元永远不会再更新的情况</em>)  </li>
+</ul>
+<h2 id="Identity-恒等函数"><a href="#Identity-恒等函数" class="headerlink" title="Identity(恒等函数)"></a>Identity(恒等函数)</h2><p><strong>描述</strong>： 一种输入和输出相等的激活函数，比较适合线性问题，如线性回归问题。但不适用于解决非线性问题。<br><strong>方程式</strong>： ${\displaystyle f(x)=x}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=1}$<br><strong>图形</strong>：<br><img src="https://upload-images.jianshu.io/upload_images/18600497-5710b0fd9c5ee858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Binary-step-单位阶跃函数"><a href="#Binary-step-单位阶跃函数" class="headerlink" title="Binary step(单位阶跃函数)"></a>Binary step(单位阶跃函数)</h2><p><strong>描述</strong>： step与神经元激活的含义最贴近，指当刺激超过阈值时才会激发。但是由于该函数的梯度始终为0，不能作为深度网络的激活函数<br><strong>方程式</strong>： ${\displaystyle f(x)={\begin{cases}0&amp;{\text{for }}x&lt;0\1&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f^{\prime}(x)={\begin{cases}0&amp;{\text{for }}x\neq 0\?&amp;{\text{for }}x=0\end{cases}}}$<br><strong>图形</strong>：<br><img src="https://upload-images.jianshu.io/upload_images/18600497-b2b444d1e96bf8e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Sigmoid-S函数又称Logistic逻辑函数"><a href="#Sigmoid-S函数又称Logistic逻辑函数" class="headerlink" title="Sigmoid(S函数又称Logistic逻辑函数)"></a>Sigmoid(S函数又称Logistic逻辑函数)</h2><p><strong>描述</strong>： 使用很广的一类激活函数，具有指数函数形状，在物理意义上最接近生物神经元。并且值域在(0,1)之间，可以作为概率表示。该函数也通常用于对输入的归一化，如Sigmoid交叉熵损失函数。Sigmoid激活函数具有梯度消失和饱和的问题，一般来说，sigmoid网络在5层之内就会产生梯度消失现象。<br><strong>方程式</strong>： ${\displaystyle f(x)=\sigma (x)={\frac {1}{1+e^{-x}}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=f(x)(1-f(x))}$<br><strong>图形</strong>：<br><img src="https://upload-images.jianshu.io/upload_images/18600497-7ecc2d07df55ae67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="TanH-双曲正切函数"><a href="#TanH-双曲正切函数" class="headerlink" title="TanH(双曲正切函数)"></a>TanH(双曲正切函数)</h2><p><strong>描述</strong>： TanH与Sigmoid函数类似，在输入很大或很小时，输出几乎平滑，梯度很小，不利于权重更新，容易出现梯度消失和饱和的问题。不过TanH函数值域在(-1,1)之间，以0为中心反对称，且原点近似恒等，这些点是加分项。一般二分类问题中，隐藏层用tanh函数，输出层用sigmod函数。<br><strong>方程式</strong>： ${\displaystyle f(x)=\tanh(x)={\frac {(e^{x}-e^{-x})}{(e^{x}+e^{-x})}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=1-f(x)^{2}}$<br><strong>图形</strong>：<br><img src="https://upload-images.jianshu.io/upload_images/18600497-9210b7ff830fdc94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="ArcTan-反正切函数"><a href="#ArcTan-反正切函数" class="headerlink" title="ArcTan(反正切函数)"></a>ArcTan(反正切函数)</h2><p><strong>描述</strong>： ArcTen从图形上看类似TanH函数，只是比TanH平缓，值域更大。从一阶导看出导数趋于零的速度比较慢，因此训练比较快。<br><strong>方程式</strong>： ${\displaystyle f(x)=\tan ^{-1}(x)}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\frac {1}{x^{2}+1}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-03c83295f756f2e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>  </p>
+<h2 id="Softsign函数"><a href="#Softsign函数" class="headerlink" title="Softsign函数"></a>Softsign函数</h2><p><strong>描述</strong>： Softsign从图形上看也类似TanH函数，以0为中心反对称，训练比较快。<br><strong>方程式</strong>： ${\displaystyle f(x)={\frac {x}{1+|x|}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\frac {1}{(1+|x|)^{2}}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-1042e88c2c7c93ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>  </p>
+<h2 id="Inverse-square-root-unit-反平方根函数-ISRU"><a href="#Inverse-square-root-unit-反平方根函数-ISRU" class="headerlink" title="Inverse square root unit(反平方根函数,ISRU)"></a>Inverse square root unit(反平方根函数,<a href="https://arxiv.org/pdf/1710.09967.pdf" target="_blank" rel="noopener">ISRU</a>)</h2><p><strong>描述</strong>： 图形类似于tanH和Sigmoid函数，论文说可作为RNN层的激活函数，号称在RNN层中达到与tanh和sigmoid一样效果的情况下，计算复杂度更低。<br><strong>方程式</strong>： ${\displaystyle f(x)={\frac {x}{\sqrt {1+\alpha x^{2}}}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=\left({\frac {1}{\sqrt {1+\alpha x^{2}}}}\right)^{3}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-4bc4074325eb5c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>   </p>
+<h2 id="Inverse-square-root-linear-unit-反平方根线性函数-ISRLU"><a href="#Inverse-square-root-linear-unit-反平方根线性函数-ISRLU" class="headerlink" title="Inverse square root linear unit(反平方根线性函数,ISRLU)"></a>Inverse square root linear unit(反平方根线性函数,ISRLU)</h2><p><strong>描述</strong>： 一个分段函数，小于0部分是ISRU，大于等于0部分是恒等函数，论文里说这函数在CNN层上相较于ReLU学习更快，更一般化。<br><strong>方程式</strong>： ${\displaystyle f(x)={\begin{cases}{\frac {x}{\sqrt {1+\alpha x^{2}}}}&amp;{\text{for }}x&lt;0\x&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\begin{cases}\left({\frac {1}{\sqrt {1+\alpha x^{2}}}}\right)^{3}&amp;{\text{for }}x&lt;0\1&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-0e78f5b1f5f92c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Square-Nonlinearity-平方非线性函数-SQNL"><a href="#Square-Nonlinearity-平方非线性函数-SQNL" class="headerlink" title="Square Nonlinearity(平方非线性函数,SQNL)"></a>Square Nonlinearity(平方非线性函数,SQNL)</h2><p><strong>描述</strong>： 类似Softsign的函数，<a href="https://ieeexplore.ieee.org/document/8489043" target="_blank" rel="noopener">论文摘要</a>中将这个与Softsign对比，说该函数在收敛速度上更快。<br><strong>方程式</strong>： ${\displaystyle f(x)={\begin{cases}1&amp;:x&gt;2.0\x-{\frac {x^{2}}{4}}&amp;:0\leq x\leq 2.0\x+{\frac {x^{2}}{4}}&amp;:-2.0\leq x&lt;0\-1&amp;:x&lt;-2.0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=1\mp {\frac {x}{2}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-245230edcd3a4a9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>  </p>
+<h2 id="Rectified-linear-unit-线性整流函数-ReLU"><a href="#Rectified-linear-unit-线性整流函数-ReLU" class="headerlink" title="Rectified linear unit(线性整流函数,ReLU)"></a>Rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0" title="线性整流函数" target="_blank" rel="noopener">线性整流函数</a>,ReLU)</h2><p><strong>描述</strong>： 比较流行的激活函数，该函数保留了类似step那样的生物学神经元机制，即高于0才激活，不过因在0以下的导数都是0，可能会引起学习缓慢甚至神经元死亡的情况。<br><strong>方程式</strong>： ${\displaystyle f(x)={\begin{cases}0&amp;{\text{for }}x\leq 0\x&amp;{\text{for }}x&gt;0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\begin{cases}0&amp;{\text{for }}x\leq 0\1&amp;{\text{for }}x&gt;0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-aaaa71e376ca3391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>  </p>
+<h2 id="Bipolar-rectified-linear-unit-二级线性整流函数-BReLU"><a href="#Bipolar-rectified-linear-unit-二级线性整流函数-BReLU" class="headerlink" title="Bipolar rectified linear unit(二级线性整流函数,BReLU)"></a>Bipolar rectified linear unit(二级线性整流函数,<a href="https://arxiv.org/pdf/1709.04054.pdf" target="_blank" rel="noopener">BReLU</a>)</h2><p><strong>描述</strong>： relu系列的一种激活函数，形式很奇怪，采用mod 2作为条件分段，论文说在个别场景上能取得更好的效果。<br><strong>方程式</strong>： $f(x_{i})={\begin{cases}ReLU(x_{i})&amp;{\text{if }}i{\bmod {2}}=0\-ReLU(-x_{i})&amp;{\text{if }}i{\bmod {2}}\neq 0\end{cases}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x_{i})={\begin{cases}ReLU’(x_{i})&amp;{\text{if }}i{\bmod {2}}=0\-ReLU’(-x_{i})&amp;{\text{if }}i{\bmod {2}}\neq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-c08bbbca6e05005b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Leaky-rectified-linear-unit-带泄露随机线性整流函数-Leaky-ReLU"><a href="#Leaky-rectified-linear-unit-带泄露随机线性整流函数-Leaky-ReLU" class="headerlink" title="Leaky rectified linear unit(带泄露随机线性整流函数,Leaky ReLU)"></a>Leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,Leaky ReLU)</h2><p><strong>描述</strong>： relu的一个变化，即在小于0部分不等于0，而是加一个很小的不为零的斜率，减少神经元死亡带来的影响。<br><strong>方程式</strong>： ${ f(x)={\begin{cases}0.01x&amp;{\text{for }}x&lt;0\x&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\begin{cases}0.01&amp;{\text{for }}x&lt;0\1&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-de814e275edfd1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Parameteric-rectified-linear-unit-参数化线性整流函数-PReLU"><a href="#Parameteric-rectified-linear-unit-参数化线性整流函数-PReLU" class="headerlink" title="Parameteric rectified linear unit(参数化线性整流函数,PReLU)"></a>Parameteric rectified linear unit(参数化线性整流函数,PReLU)</h2><p><strong>描述</strong>： 也是ReLU的一个变化，与Leaky ReLU类似，只不过PReLU将小于零部分的斜率换成了可变参数α。这种变化使值域会依据α不同而不同。<br><strong>方程式</strong>： ${\displaystyle f(\alpha ,x)={\begin{cases}\alpha x&amp;{\text{for }}x&lt;0\x&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>一阶导</strong>： ${ f’(\alpha ,x)={\begin{cases}\alpha &amp;{\text{for }}x&lt;0\1&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-193a91a0a6deee5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Randomized-leaky-rectified-linear-unit-带泄露随机线性整流函数-RReLU"><a href="#Randomized-leaky-rectified-linear-unit-带泄露随机线性整流函数-RReLU" class="headerlink" title="Randomized leaky rectified linear unit(带泄露随机线性整流函数,RReLU)"></a>Randomized leaky rectified linear unit(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0#%E5%B8%A6%E6%B3%84%E9%9C%B2%E9%9A%8F%E6%9C%BA%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81" title="线性整流函数" target="_blank" rel="noopener">带泄露随机线性整流函数</a>,RReLU)</h2><p><strong>描述</strong>： 在PReLU基础上将α变成了随机数。参考<a href="https://arxiv.org/abs/1505.00853" target="_blank" rel="noopener">论文</a><br><strong>方程式</strong>： ${\displaystyle f(\alpha ,x)={\begin{cases}\alpha x&amp;{\text{for }}x&lt;0\x&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>一阶导</strong>： ${ f’(\alpha ,x)={\begin{cases}\alpha &amp;{\text{for }}x&lt;0\1&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-7c8d441bd88e7593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Exponential-linear-unit-指数线性函数-ELU"><a href="#Exponential-linear-unit-指数线性函数-ELU" class="headerlink" title="Exponential linear unit(指数线性函数,ELU)"></a>Exponential linear unit(指数线性函数,ELU)</h2><p><strong>描述</strong>： ELU小于零的部分采用了负指数形式，相较于ReLU权重可以有负值，并且在输入取较小值时具有软饱和的特性，提升了对噪声的鲁棒性。参考<a href="https://blog.csdn.net/mao_xiao_feng/article/details/53242235?locationNum=9&fps=1" target="_blank" rel="noopener">ELU激活函数的提出</a><br><strong>方程式</strong>： ${\displaystyle f(\alpha ,x)={\begin{cases}\alpha (e^{x}-1)&amp;{\text{for }}x\leq 0\x&amp;{\text{for }}x&gt;0\end{cases}}}$<br><strong>一阶导</strong>： ${ f’(\alpha ,x)={\begin{cases}f(\alpha ,x)+\alpha &amp;{\text{for }}x\leq 0\1&amp;{\text{for }}x&gt;0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-20873dee2d68795d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Scaled-exponential-linear-unit-扩展指数线性函数-SELU"><a href="#Scaled-exponential-linear-unit-扩展指数线性函数-SELU" class="headerlink" title="Scaled exponential linear unit(扩展指数线性函数,SELU)"></a>Scaled exponential linear unit(扩展指数线性函数,SELU)</h2><p><strong>描述</strong>： ELU的一种变化，引入超参λ和α，并给出了相应取值，这些取值在原论文中（<a href="https://arxiv.org/abs/1706.02515" target="_blank" rel="noopener">Self-Normalizing Neural Networks</a>）详细推导过程<br><strong>方程式</strong>： ${ f(\alpha ,x)=\lambda {\begin{cases}\alpha (e^{x}-1)&amp;{\text{for }}x&lt;0\x&amp;{\text{for }}x\geq 0\end{cases}}} $<br>$with \quad{\displaystyle \lambda =1.0507}  \quad and  \quad {\displaystyle \alpha =1.67326}$<br><strong>一阶导</strong>： ${\displaystyle f’(\alpha ,x)=\lambda {\begin{cases}\alpha (e^{x})&amp;{\text{for }}x&lt;0\1&amp;{\text{for }}x\geq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-813a02444c461bf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="S-shaped-rectified-linear-activation-unit-S型线性整流激活函数-SReLU"><a href="#S-shaped-rectified-linear-activation-unit-S型线性整流激活函数-SReLU" class="headerlink" title="S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)"></a>S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)</h2><p><strong>描述</strong>： 也是ReLU的一种变化，不同的是该函数有三个分段，四个超参数，这种设置使函数图形看起来像S型，具体参考<a href="https://arxiv.org/abs/1512.07030" target="_blank" rel="noopener">论文</a>。<br><strong>方程式</strong>： ${\displaystyle f_{t_{l},a_{l},t_{r},a_{r}}(x)={\begin{cases}t_{l}+a_{l}(x-t_{l})&amp;{\text{for }}x\leq t_{l}\x&amp;{\text{for }}t_{l}&lt;x&lt;t_{r}\t_{r}+a_{r}(x-t_{r})&amp;{\text{for }}x\geq t_{r}\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’<em>{t</em>{l},a_{l},t_{r},a_{r}}(x)={\begin{cases}a_{l}&amp;{\text{for }}x\leq t_{l}\1&amp;{\text{for }}t_{l}&lt;x&lt;t_{r}\a_{r}&amp;{\text{for }}x\geq t_{r}\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-6b723b46e8e6d58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Adaptive-piecewise-linear-自适应分段线性函数-APL"><a href="#Adaptive-piecewise-linear-自适应分段线性函数-APL" class="headerlink" title="Adaptive piecewise linear(自适应分段线性函数,APL)"></a>Adaptive piecewise linear(自适应分段线性函数,APL)</h2><p><strong>描述</strong>： 原<a href="https://arxiv.org/abs/1412.6830" target="_blank" rel="noopener">论文</a>表示通过分段为神经元学习加入自适应激活功能，比ReLU在cifar-10、cifar-100上有更好的性能。<br><strong>方程式</strong>： ${\displaystyle f(x)=\max(0,x)+\sum <em>{s=1}^{S}a</em>{i}^{s}\max(0,-x+b_{i}^{s})}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=H(x)-\sum <em>{s=1}^{S}a</em>{i}^{s}H(-x+b_{i}^{s})}$<br><strong>图形</strong>：</p>
+<h2 id="SoftPlus函数"><a href="#SoftPlus函数" class="headerlink" title="SoftPlus函数"></a>SoftPlus函数</h2><p><strong>描述</strong>： 是ReLU的平滑替代，函数在任何地方连续且值域非零，避免了死神经元。不过因不对称且不以零为中心，可以影响网络学习。由于导数必然小于1，所以也存在梯度消失问题。<br><strong>方程式</strong>： ${\displaystyle f(x)=\ln(1+e^{x})}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\frac {1}{1+e^{-x}}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-e78b931a88ee79c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Bent-identity-弯曲恒等函数"><a href="#Bent-identity-弯曲恒等函数" class="headerlink" title="Bent identity(弯曲恒等函数)"></a>Bent identity(弯曲恒等函数)</h2><p><strong>描述</strong>： 可以理解为identity和ReLU之间的一种折中，不会出现死神经元的问题，不过存在梯度消失和梯度爆炸风险。<br><strong>方程式</strong>： $\begin{align<em>}f(x)=\frac{\sqrt{x^2 + 1} - 1}{2} + x \end{align</em>}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\frac {x}{2{\sqrt {x^{2}+1}}}}+1}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-d48fb0c9bcd7aeb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Sigmoid-weighted-linear-unit-SiLU"><a href="#Sigmoid-weighted-linear-unit-SiLU" class="headerlink" title="Sigmoid-weighted linear unit (SiLU)"></a>Sigmoid-weighted linear unit (SiLU)</h2><p><strong>描述</strong>： 具体参考<a href="https://arxiv.org/abs/1702.03118" target="_blank" rel="noopener">论文</a><br><strong>方程式</strong>： ${\displaystyle f(x)=x\cdot \sigma (x)}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=f(x)+\sigma (x)(1-f(x))}$<br><strong>图形</strong>：</p>
+<h2 id="SoftExponential函数"><a href="#SoftExponential函数" class="headerlink" title="SoftExponential函数"></a>SoftExponential函数</h2><p><strong>描述</strong>： 参考<a href="https://arxiv.org/abs/1602.01321" target="_blank" rel="noopener">论文</a><br><strong>方程式</strong>： ${\displaystyle f(\alpha ,x)={\begin{cases}-{\frac {\ln(1-\alpha (x+\alpha ))}{\alpha }}&amp;{\text{for }}\alpha &lt;0\x&amp;{\text{for }}\alpha =0\{\frac {e^{\alpha x}-1}{\alpha }}+\alpha &amp;{\text{for }}\alpha &gt;0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(\alpha ,x)={\begin{cases}{\frac {1}{1-\alpha (\alpha +x)}}&amp;{\text{for }}\alpha &lt;0\e^{\alpha x}&amp;{\text{for }}\alpha \geq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-1d977dd9ebda9431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Soft-Clipping-柔性剪峰函数"><a href="#Soft-Clipping-柔性剪峰函数" class="headerlink" title="Soft Clipping(柔性剪峰函数)"></a>Soft Clipping(柔性剪峰函数)</h2><p><strong>描述</strong>： 参考<a href="https://arxiv.org/abs/1810.11509" target="_blank" rel="noopener">论文</a><br><strong>方程式</strong>： ${\displaystyle f(\alpha ,x)={\frac {1}{\alpha }}\log {\frac {1+e^{\alpha x}}{1+e^{\alpha (x-1)}}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(\alpha ,x)={\frac {1}{2}}\sinh \left({\frac {p}{2}}\right){\text{sech}}\left({\frac {px}{2}}\right){\text{sech}}\left({\frac {p}{2}}(1-x)\right)}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-a090a7783d0d8779.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Sinusoid正弦函数"><a href="#Sinusoid正弦函数" class="headerlink" title="Sinusoid正弦函数)"></a><a href="https://en.wikipedia.org/wiki/Sine_wave" target="_blank" rel="noopener">Sinusoid</a><a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%BC%A6%E5%87%BD%E6%95%B0" title="正弦函数" target="_blank" rel="noopener">正弦函数</a>)</h2><p><strong>描述</strong>： Sinusoid作为激活函数，为神经网络引入了周期性，且该函数处处联系，以零点对称。参考<a href="https://arxiv.org/abs/1405.2262" target="_blank" rel="noopener">论文</a><br><strong>方程式</strong>： ${\displaystyle f(x)=\sin(x)}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=\cos(x)}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-d3e3e1eb128a9880.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Sinc函数"><a href="#Sinc函数" class="headerlink" title="Sinc函数"></a><a href="https://zh.wikipedia.org/wiki/Sinc%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">Sinc函数</a></h2><p><strong>描述</strong>： Sinc函数在信号处理中尤为重要，因为它表征了矩形函数的傅立叶变换。作为激活函数，它的优势在于处处可微和对称的特性，不过容易产生梯度消失的问题。<br><strong>方程式</strong>： ${\displaystyle f(x)={\begin{cases}1&amp;{\text{for }}x=0\{\frac {\sin(x)}{x}}&amp;{\text{for }}x\neq 0\end{cases}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)={\begin{cases}0&amp;{\text{for }}x=0\{\frac {\cos(x)}{x}}-{\frac {\sin(x)}{x^{2}}}&amp;{\text{for }}x\neq 0\end{cases}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-dd49869c7fea9686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Gaussian-高斯函数"><a href="#Gaussian-高斯函数" class="headerlink" title="Gaussian(高斯函数)"></a><a href="https://en.wikipedia.org/wiki/Gaussian_function" title="Gaussian function" target="_blank" rel="noopener">Gaussian</a>(<a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E6%96%AF%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">高斯函数</a>)</h2><p><strong>描述</strong>： 高斯激活函数不常用。<br><strong>方程式</strong>： ${\displaystyle f(x)=e^{-x^{2}}}$<br><strong>一阶导</strong>： ${\displaystyle f’(x)=-2xe^{-x^{2}}}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-b9849f4e71ae2f9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Hard-Sigmoid-分段近似Sigmoid函数"><a href="#Hard-Sigmoid-分段近似Sigmoid函数" class="headerlink" title="Hard Sigmoid(分段近似Sigmoid函数)"></a>Hard Sigmoid(分段近似Sigmoid函数)</h2><p><strong>描述</strong>： 是Sigmoid函数的分段线性近似，更容易计算，不过存在梯度消失和神经元死亡的问题<br><strong>方程式</strong>： $f(x) =\begin{cases}0 &amp; \text{for } x&lt;-2.5\0.2x + 0.5 &amp; \text{for } -2.5\geq x\leq 2.5 \1 &amp; \text{for } x&gt;2.5\end{cases}$<br><strong>一阶导</strong>： $f’(x) =\begin{cases}0 &amp; \text{for } x&lt;-2.5\0.2 &amp; \text{for } -2.5\geq x\leq 2.5 \0 &amp; \text{for } x&gt;2.5\end{cases}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-2c3e53ea13dc080e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Hard-Tanh-分段近似Tanh函数"><a href="#Hard-Tanh-分段近似Tanh函数" class="headerlink" title="Hard Tanh(分段近似Tanh函数)"></a>Hard Tanh(分段近似Tanh函数)</h2><p><strong>描述</strong>： Tanh激活函数的分段线性近似。<br><strong>方程式</strong>： $f(x) =\begin{cases}-1 &amp; \text{for } x&lt;-1\x &amp; \text{for } -1\geq x\leq 1 \1 &amp; \text{for } x&gt;1 \end{cases}$<br><strong>一阶导</strong>： $f’(x) =\begin{cases}0 &amp; \text{for } x&lt;-1\1 &amp; \text{for } -1\geq x\leq 1 \0 &amp; \text{for } x&gt;1\end{cases}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-b5d4e0248cb1acfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="LeCun-Tanh-也称Scaled-Tanh-按比例缩放的Tanh函数"><a href="#LeCun-Tanh-也称Scaled-Tanh-按比例缩放的Tanh函数" class="headerlink" title="LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)"></a>LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)</h2><p><strong>描述</strong>： Tanh的缩放版本，参考<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf" target="_blank" rel="noopener">论文</a><br><strong>方程式</strong>： $\begin{align<em>}f(x)&amp;=1.7519\tanh(\frac{2}{3}x)\end{align</em>}$<br><strong>一阶导</strong>： $\begin{align<em>}f’(x)&amp;=1.7519<em>\frac{2}{3}(1-\tanh^2(\frac{2}{3}x))\&amp;=1.7519</em>\frac{2}{3}-\frac{2}{3*1.7519}f(x)^2\end{align</em>}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-1bb660c33c3059d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Symmetrical-Sigmoid-对称Sigmoid函数"><a href="#Symmetrical-Sigmoid-对称Sigmoid函数" class="headerlink" title="Symmetrical Sigmoid(对称Sigmoid函数)"></a>Symmetrical Sigmoid(对称Sigmoid函数)</h2><p><strong>描述</strong>： 是Tanh的一种替代方法，比Tanh形状更扁平，导数更小，下降更缓慢。<br><strong>方程式</strong>： $\begin{align<em>}f(x)&amp;=\tanh(x/2)\&amp;=\frac{1-e^{-x}}{1+e^{-x}}\end{align</em>}$<br><strong>一阶导</strong>： $\begin{align<em>}f’(x)&amp;=0.5(1-\tanh^2(x/2))\&amp;=0.5(1-f(x)^2)\end{align</em>}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-5aaa82d797f96fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Complementary-Log-Log函数"><a href="#Complementary-Log-Log函数" class="headerlink" title="Complementary Log Log函数"></a>Complementary Log Log函数</h2><p><strong>描述</strong>： 是Sigmoid的一种替代，相较于Sigmoid更饱和。<br><strong>方程式</strong>： $f(x)=1-e^{-e^{x}}$<br><strong>一阶导</strong>： $\begin{align<em>}f’(x)=e^{x}(e^{-e^{x}}) = e^{x-e^{x}}\end{align</em>}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-08cdebbecc3d058b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Absolute-绝对值函数"><a href="#Absolute-绝对值函数" class="headerlink" title="Absolute(绝对值函数)"></a>Absolute(绝对值函数)</h2><p><strong>描述</strong>： 导数只有两个值。<br><strong>方程式</strong>： $\begin{align<em>}f(x)=|x|\end{align</em>}$<br><strong>一阶导</strong>： $f’(x) =\begin{cases}-1 &amp; \text{for } x&lt;0\1 &amp; \text{for } x&gt;0\? &amp; \text{for } x=0\end{cases}$<br><strong>图形</strong>：<img src="https://upload-images.jianshu.io/upload_images/18600497-7d837d66e7bac174.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="Order-of-continuity-函数连续性"><a href="#Order-of-continuity-函数连续性" class="headerlink" title="Order of continuity(函数连续性)"></a>Order of continuity(函数连续性)</h2><p>函数参数连续性是个人的意译，大概意思应该是激活函数曲线的连续性类型。wiki中有对各个值的说明，可参考<a href="https://en.wikipedia.org/wiki/Smoothness#Order_of_continuity" target="_blank" rel="noopener">Order_of_continuity</a>和<a href="https://blog.csdn.net/weixin_42513339/article/details/83474118" target="_blank" rel="noopener">描述光滑度中对于曲线、曲面的C0、C1、C2和G0、G1、G2定义和区别 - chenchen_fcj程序猿的博客 - CSDN博客</a>，简单说明如下  </p>
+<ul>
+<li><p>$C^{-1}$: 曲线不连续  </p>
+</li>
+<li><p>$C^{0}$: 曲线本身是连续的，但不可导  </p>
+</li>
+<li><p>$C^{1}$:  曲线一阶导是连续的，但无法二阶导  </p>
+</li>
+<li><p>$C^{2}$:  曲线一阶导和二阶导是连续的，但无法三阶导  </p>
+</li>
+<li><p>$C^{n}$:  曲线一阶导到n阶导是连续的，但无法进行n+1阶导  </p>
+</li>
+<li><p>$C^{\infty}$: 曲线无穷阶可导  </p>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">visualising-activation-functions-in-neural-networks</a><br><a href="https://en.wikipedia.org/wiki/Activation_function" target="_blank" rel="noopener">Activation_function</a><br><a href="https://zhuanlan.zhihu.com/p/32824193" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32824193</a>  </p>
 
       
     </div>
@@ -1354,7 +1201,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1379,7 +1226,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1414,7 +1263,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1473,7 +1326,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#了解激活函数"><span class="nav-number">2.</span> <span class="nav-text">了解激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是激活函数"><span class="nav-number">2.1.</span> <span class="nav-text">什么是激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-number">2.2.</span> <span class="nav-text">为什么需要激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数类型"><span class="nav-number">2.3.</span> <span class="nav-text">激活函数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数的一些特性"><span class="nav-number">2.4.</span> <span class="nav-text">激活函数的一些特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数速查表"><span class="nav-number">3.</span> <span class="nav-text">激活函数速查表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数详细描述"><span class="nav-number">4.</span> <span class="nav-text">激活函数详细描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#identity恒等函数"><span class="nav-number">4.1.</span> <span class="nav-text">Identity(恒等函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-step单位阶跃函数"><span class="nav-number">4.2.</span> <span class="nav-text">Binary step(单位阶跃函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmoids函数又称logistic逻辑函数"><span class="nav-number">4.3.</span> <span class="nav-text">Sigmoid(S函数又称Logistic逻辑函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tanh双曲正切函数"><span class="nav-number">4.4.</span> <span class="nav-text">TanH(双曲正切函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arctan反正切函数"><span class="nav-number">4.5.</span> <span class="nav-text">ArcTan(反正切函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softsign函数"><span class="nav-number">4.6.</span> <span class="nav-text">Softsign函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inverse-square-root-unit反平方根函数isru"><span class="nav-number">4.7.</span> <span class="nav-text">Inverse square root unit(反平方根函数,ISRU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inverse-square-root-linear-unit反平方根线性函数isrlu"><span class="nav-number">4.8.</span> <span class="nav-text">Inverse square root linear unit(反平方根线性函数,ISRLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#square-nonlinearity平方非线性函数sqnl"><span class="nav-number">4.9.</span> <span class="nav-text">Square Nonlinearity(平方非线性函数,SQNL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rectified-linear-unit线性整流函数relu"><span class="nav-number">4.10.</span> <span class="nav-text">Rectified linear unit(线性整流函数,ReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bipolar-rectified-linear-unit二级线性整流函数brelu"><span class="nav-number">4.11.</span> <span class="nav-text">Bipolar rectified linear unit(二级线性整流函数,BReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leaky-rectified-linear-unit带泄露随机线性整流函数leaky-relu"><span class="nav-number">4.12.</span> <span class="nav-text">Leaky rectified linear unit(带泄露随机线性整流函数,Leaky ReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parameteric-rectified-linear-unit参数化线性整流函数prelu"><span class="nav-number">4.13.</span> <span class="nav-text">Parameteric rectified linear unit(参数化线性整流函数,PReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#randomized-leaky-rectified-linear-unit带泄露随机线性整流函数rrelu"><span class="nav-number">4.14.</span> <span class="nav-text">Randomized leaky rectified linear unit(带泄露随机线性整流函数,RReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exponential-linear-unit指数线性函数elu"><span class="nav-number">4.15.</span> <span class="nav-text">Exponential linear unit(指数线性函数,ELU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scaled-exponential-linear-unit扩展指数线性函数selu"><span class="nav-number">4.16.</span> <span class="nav-text">Scaled exponential linear unit(扩展指数线性函数,SELU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s-shaped-rectified-linear-activation-units型线性整流激活函数srelu"><span class="nav-number">4.17.</span> <span class="nav-text">S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adaptive-piecewise-linear自适应分段线性函数apl"><span class="nav-number">4.18.</span> <span class="nav-text">Adaptive piecewise linear(自适应分段线性函数,APL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softplus函数"><span class="nav-number">4.19.</span> <span class="nav-text">SoftPlus函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bent-identity弯曲恒等函数"><span class="nav-number">4.20.</span> <span class="nav-text">Bent identity(弯曲恒等函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmoid-weighted-linear-unit-silu"><span class="nav-number">4.21.</span> <span class="nav-text">Sigmoid-weighted linear unit (SiLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softexponential函数"><span class="nav-number">4.22.</span> <span class="nav-text">SoftExponential函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#soft-clipping柔性剪峰函数"><span class="nav-number">4.23.</span> <span class="nav-text">Soft Clipping(柔性剪峰函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sinusoid正弦函数"><span class="nav-number">4.24.</span> <span class="nav-text">Sinusoid(正弦函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sinc函数"><span class="nav-number">4.25.</span> <span class="nav-text">Sinc函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gaussian高斯函数"><span class="nav-number">4.26.</span> <span class="nav-text">Gaussian(高斯函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hard-sigmoid分段近似sigmoid函数"><span class="nav-number">4.27.</span> <span class="nav-text">Hard Sigmoid(分段近似Sigmoid函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hard-tanh分段近似tanh函数"><span class="nav-number">4.28.</span> <span class="nav-text">Hard Tanh(分段近似Tanh函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecun-tanh也称scaled-tanh按比例缩放的tanh函数"><span class="nav-number">4.29.</span> <span class="nav-text">LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetrical-sigmoid对称sigmoid函数"><span class="nav-number">4.30.</span> <span class="nav-text">Symmetrical Sigmoid(对称Sigmoid函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#complementary-log-log函数"><span class="nav-number">4.31.</span> <span class="nav-text">Complementary Log Log函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute绝对值函数"><span class="nav-number">4.32.</span> <span class="nav-text">Absolute(绝对值函数)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-continuity函数连续性"><span class="nav-number">5.1.</span> <span class="nav-text">Order of continuity(函数连续性)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#了解激活函数"><span class="nav-number">2.</span> <span class="nav-text">了解激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是激活函数"><span class="nav-number">2.1.</span> <span class="nav-text">什么是激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-number">2.2.</span> <span class="nav-text">为什么需要激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数类型"><span class="nav-number">2.3.</span> <span class="nav-text">激活函数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数的一些特性"><span class="nav-number">2.4.</span> <span class="nav-text">激活函数的一些特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数速查表"><span class="nav-number">3.</span> <span class="nav-text">激活函数速查表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数详细描述"><span class="nav-number">4.</span> <span class="nav-text">激活函数详细描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Identity-恒等函数"><span class="nav-number">4.1.</span> <span class="nav-text">Identity(恒等函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-step-单位阶跃函数"><span class="nav-number">4.2.</span> <span class="nav-text">Binary step(单位阶跃函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sigmoid-S函数又称Logistic逻辑函数"><span class="nav-number">4.3.</span> <span class="nav-text">Sigmoid(S函数又称Logistic逻辑函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TanH-双曲正切函数"><span class="nav-number">4.4.</span> <span class="nav-text">TanH(双曲正切函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArcTan-反正切函数"><span class="nav-number">4.5.</span> <span class="nav-text">ArcTan(反正切函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softsign函数"><span class="nav-number">4.6.</span> <span class="nav-text">Softsign函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inverse-square-root-unit-反平方根函数-ISRU"><span class="nav-number">4.7.</span> <span class="nav-text">Inverse square root unit(反平方根函数,ISRU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inverse-square-root-linear-unit-反平方根线性函数-ISRLU"><span class="nav-number">4.8.</span> <span class="nav-text">Inverse square root linear unit(反平方根线性函数,ISRLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Square-Nonlinearity-平方非线性函数-SQNL"><span class="nav-number">4.9.</span> <span class="nav-text">Square Nonlinearity(平方非线性函数,SQNL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rectified-linear-unit-线性整流函数-ReLU"><span class="nav-number">4.10.</span> <span class="nav-text">Rectified linear unit(线性整流函数,ReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bipolar-rectified-linear-unit-二级线性整流函数-BReLU"><span class="nav-number">4.11.</span> <span class="nav-text">Bipolar rectified linear unit(二级线性整流函数,BReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leaky-rectified-linear-unit-带泄露随机线性整流函数-Leaky-ReLU"><span class="nav-number">4.12.</span> <span class="nav-text">Leaky rectified linear unit(带泄露随机线性整流函数,Leaky ReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parameteric-rectified-linear-unit-参数化线性整流函数-PReLU"><span class="nav-number">4.13.</span> <span class="nav-text">Parameteric rectified linear unit(参数化线性整流函数,PReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Randomized-leaky-rectified-linear-unit-带泄露随机线性整流函数-RReLU"><span class="nav-number">4.14.</span> <span class="nav-text">Randomized leaky rectified linear unit(带泄露随机线性整流函数,RReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exponential-linear-unit-指数线性函数-ELU"><span class="nav-number">4.15.</span> <span class="nav-text">Exponential linear unit(指数线性函数,ELU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scaled-exponential-linear-unit-扩展指数线性函数-SELU"><span class="nav-number">4.16.</span> <span class="nav-text">Scaled exponential linear unit(扩展指数线性函数,SELU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-shaped-rectified-linear-activation-unit-S型线性整流激活函数-SReLU"><span class="nav-number">4.17.</span> <span class="nav-text">S-shaped rectified linear activation unit(S型线性整流激活函数,SReLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adaptive-piecewise-linear-自适应分段线性函数-APL"><span class="nav-number">4.18.</span> <span class="nav-text">Adaptive piecewise linear(自适应分段线性函数,APL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SoftPlus函数"><span class="nav-number">4.19.</span> <span class="nav-text">SoftPlus函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bent-identity-弯曲恒等函数"><span class="nav-number">4.20.</span> <span class="nav-text">Bent identity(弯曲恒等函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sigmoid-weighted-linear-unit-SiLU"><span class="nav-number">4.21.</span> <span class="nav-text">Sigmoid-weighted linear unit (SiLU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SoftExponential函数"><span class="nav-number">4.22.</span> <span class="nav-text">SoftExponential函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Soft-Clipping-柔性剪峰函数"><span class="nav-number">4.23.</span> <span class="nav-text">Soft Clipping(柔性剪峰函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sinusoid正弦函数"><span class="nav-number">4.24.</span> <span class="nav-text">Sinusoid正弦函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sinc函数"><span class="nav-number">4.25.</span> <span class="nav-text">Sinc函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-高斯函数"><span class="nav-number">4.26.</span> <span class="nav-text">Gaussian(高斯函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hard-Sigmoid-分段近似Sigmoid函数"><span class="nav-number">4.27.</span> <span class="nav-text">Hard Sigmoid(分段近似Sigmoid函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hard-Tanh-分段近似Tanh函数"><span class="nav-number">4.28.</span> <span class="nav-text">Hard Tanh(分段近似Tanh函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeCun-Tanh-也称Scaled-Tanh-按比例缩放的Tanh函数"><span class="nav-number">4.29.</span> <span class="nav-text">LeCun Tanh(也称Scaled Tanh,按比例缩放的Tanh函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symmetrical-Sigmoid-对称Sigmoid函数"><span class="nav-number">4.30.</span> <span class="nav-text">Symmetrical Sigmoid(对称Sigmoid函数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complementary-Log-Log函数"><span class="nav-number">4.31.</span> <span class="nav-text">Complementary Log Log函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Absolute-绝对值函数"><span class="nav-number">4.32.</span> <span class="nav-text">Absolute(绝对值函数)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Order-of-continuity-函数连续性"><span class="nav-number">5.1.</span> <span class="nav-text">Order of continuity(函数连续性)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -1515,7 +1368,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">24k</span>
   
 
   
@@ -1526,7 +1379,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">40 分钟</span>
+    <span title="站点阅读时长">43 分钟</span>
   
 </div>
 
